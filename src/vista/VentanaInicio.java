@@ -4,6 +4,12 @@
  */
 package vista;
 
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Herrera
@@ -14,7 +20,20 @@ public class VentanaInicio extends javax.swing.JFrame {
      * Creates new form VentanaInicio
      */
     public VentanaInicio() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
+        setLocationRelativeTo(null);
+        ocultarSubMenuPanes();
     }
 
     /**
@@ -41,18 +60,50 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtAutos2 = new javax.swing.JLabel();
         btnReportes = new javax.swing.JPanel();
         txtAutos3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         barra = new javax.swing.JPanel();
         btn_close = new javax.swing.JLabel();
         btn_minimize = new javax.swing.JLabel();
         autosPane = new javax.swing.JPanel();
-        btnClientes1 = new javax.swing.JPanel();
+        barPaneAuto = new javax.swing.JPanel();
         txtAutosTitulo = new javax.swing.JLabel();
-        btnConsultar = new javax.swing.JLabel();
         txtModoAutos = new javax.swing.JLabel();
-        btnConsultar1 = new javax.swing.JLabel();
-        btnConsultar2 = new javax.swing.JLabel();
-        btnConsultar3 = new javax.swing.JLabel();
+        btnModoRegistrar = new javax.swing.JLabel();
+        btnModoConsultar = new javax.swing.JLabel();
+        btnModoEliminar = new javax.swing.JLabel();
+        btnModoModificar = new javax.swing.JLabel();
+        autoFormularioPane = new javax.swing.JPanel();
+        ventasPane = new javax.swing.JPanel();
+        barPaneVentas = new javax.swing.JPanel();
+        txtVentasTitulo = new javax.swing.JLabel();
+        txtModoVentas = new javax.swing.JLabel();
+        btnModoRegistrarVentas = new javax.swing.JLabel();
+        btnModoConsultarVentas = new javax.swing.JLabel();
+        btnModoEliminarVentas = new javax.swing.JLabel();
+        btnModoModificarVentas = new javax.swing.JLabel();
+        ventasFormularioPane = new javax.swing.JPanel();
+        vendedoresPane = new javax.swing.JPanel();
+        barPaneVendedores = new javax.swing.JPanel();
+        txtVendedoresTitulo = new javax.swing.JLabel();
+        txtModoVendedores = new javax.swing.JLabel();
+        btnModoRegistrarVendedores = new javax.swing.JLabel();
+        btnModoConsultarVendedores = new javax.swing.JLabel();
+        btnModoEliminarVendedores = new javax.swing.JLabel();
+        btnModoModificarVendedores = new javax.swing.JLabel();
+        vendedoresFormularioPane = new javax.swing.JPanel();
+        clientesPane = new javax.swing.JPanel();
+        barPaneClientes = new javax.swing.JPanel();
+        txtClientesTitulo = new javax.swing.JLabel();
+        txtModoClientes = new javax.swing.JLabel();
+        btnModoRegistrarClientes = new javax.swing.JLabel();
+        btnModoConsultarClientes = new javax.swing.JLabel();
+        btnModoEliminarClientes = new javax.swing.JLabel();
+        btnModoModificarClientes = new javax.swing.JLabel();
+        clientesFormularioPane = new javax.swing.JPanel();
+        reportesPane = new javax.swing.JPanel();
+        barPaneReportes = new javax.swing.JPanel();
+        txtReportesTitulo = new javax.swing.JLabel();
+        txtModoReportes = new javax.swing.JLabel();
+        reportesFormularioPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -67,7 +118,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtLogo.setForeground(new java.awt.Color(240, 240, 240));
         txtLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLogo.setText("AutAmi");
-        menu.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 140, 60));
+        menu.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 140, 50));
 
         cuadroDec.setBackground(new java.awt.Color(230, 230, 230));
 
@@ -82,7 +133,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        menu.add(cuadroDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 30, 30));
+        menu.add(cuadroDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 30, 30));
 
         cuadroDec2.setBackground(new java.awt.Color(8, 117, 207));
 
@@ -97,10 +148,21 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        menu.add(cuadroDec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 30, 30));
+        menu.add(cuadroDec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 30, 30));
 
         btnAutos.setBackground(new java.awt.Color(54, 42, 99));
         btnAutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAutosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAutosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAutosMouseExited(evt);
+            }
+        });
         btnAutos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -109,10 +171,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtAutos.setText("     Automoviles");
         btnAutos.add(txtAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
 
-        menu.add(btnAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 250, 50));
+        menu.add(btnAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 250, 50));
 
         btnClientes.setBackground(new java.awt.Color(54, 42, 99));
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClientesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnClientesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnClientesMouseExited(evt);
+            }
+        });
         btnClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtClientes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -121,10 +194,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtClientes.setText("     Clientes");
         btnClientes.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
 
-        menu.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 250, 50));
+        menu.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 250, 50));
 
         btnVendedores.setBackground(new java.awt.Color(54, 42, 99));
         btnVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVendedoresMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVendedoresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVendedoresMouseExited(evt);
+            }
+        });
         btnVendedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAutos1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -133,10 +217,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtAutos1.setText("     Vendedores");
         btnVendedores.add(txtAutos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
 
-        menu.add(btnVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 50));
+        menu.add(btnVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 250, 50));
 
         btnVentas.setBackground(new java.awt.Color(54, 42, 99));
         btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVentasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVentasMouseExited(evt);
+            }
+        });
         btnVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAutos2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -145,10 +240,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtAutos2.setText("     Ventas");
         btnVentas.add(txtAutos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
 
-        menu.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 250, 50));
+        menu.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 250, 50));
 
         btnReportes.setBackground(new java.awt.Color(54, 42, 99));
         btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnReportesMouseExited(evt);
+            }
+        });
         btnReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAutos3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -157,26 +263,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         txtAutos3.setText("     Generar reportes o graficos");
         btnReportes.add(txtAutos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
 
-        menu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 250, 50));
-
-        jPanel1.setBackground(new java.awt.Color(69, 60, 103));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
-
-        menu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 250, 20));
+        menu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 50));
 
         bg.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
 
-        barra.setBackground(new java.awt.Color(54, 42, 99));
+        barra.setBackground(new java.awt.Color(72, 58, 125));
+        barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraMouseDragged(evt);
+            }
+        });
+        barra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraMousePressed(evt);
+            }
+        });
         barra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_close.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -185,6 +286,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         btn_close.setText("X");
         btn_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_close.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_closeMouseClicked(evt);
+            }
+        });
         barra.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 0, 30, 30));
 
         btn_minimize.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -193,65 +299,338 @@ public class VentanaInicio extends javax.swing.JFrame {
         btn_minimize.setText("–");
         btn_minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_minimize.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_minimizeMouseClicked(evt);
+            }
+        });
         barra.add(btn_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 30, 30));
 
         bg.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
         autosPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnClientes1.setBackground(new java.awt.Color(54, 42, 99));
-        btnClientes1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClientes1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnClientes1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnClientes1MouseExited(evt);
-            }
-        });
-        btnClientes1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        barPaneAuto.setBackground(new java.awt.Color(72, 58, 125));
+        barPaneAuto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barPaneAuto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAutosTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         txtAutosTitulo.setForeground(new java.awt.Color(240, 240, 240));
         txtAutosTitulo.setText("Automoviles");
-        btnClientes1.add(txtAutosTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 30));
-
-        btnConsultar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        btnConsultar.setForeground(new java.awt.Color(230, 230, 230));
-        btnConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConsultar.setText("Registrar");
-        btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClientes1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 90, 30));
+        barPaneAuto.add(txtAutosTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
 
         txtModoAutos.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
         txtModoAutos.setForeground(new java.awt.Color(240, 240, 240));
         txtModoAutos.setText("MODO REGISTRO");
-        btnClientes1.add(txtModoAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, 60));
+        barPaneAuto.add(txtModoAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
 
-        btnConsultar1.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        btnConsultar1.setForeground(new java.awt.Color(230, 230, 230));
-        btnConsultar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConsultar1.setText("Consultar");
-        btnConsultar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClientes1.add(btnConsultar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 90, 30));
+        btnModoRegistrar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoRegistrar.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoRegistrar.setText("Registrar");
+        btnModoRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoRegistrarMouseClicked(evt);
+            }
+        });
+        barPaneAuto.add(btnModoRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 90, 30));
 
-        btnConsultar2.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        btnConsultar2.setForeground(new java.awt.Color(230, 230, 230));
-        btnConsultar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConsultar2.setText("Eliminar");
-        btnConsultar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClientes1.add(btnConsultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 90, 30));
+        btnModoConsultar.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoConsultar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoConsultar.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoConsultar.setText("Consultar");
+        btnModoConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoConsultarMouseClicked(evt);
+            }
+        });
+        barPaneAuto.add(btnModoConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 90, 30));
 
-        btnConsultar3.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        btnConsultar3.setForeground(new java.awt.Color(230, 230, 230));
-        btnConsultar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConsultar3.setText("Modificar");
-        btnConsultar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClientes1.add(btnConsultar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 90, 30));
+        btnModoEliminar.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoEliminar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoEliminar.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoEliminar.setText("Eliminar");
+        btnModoEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoEliminarMouseClicked(evt);
+            }
+        });
+        barPaneAuto.add(btnModoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 90, 30));
 
-        autosPane.add(btnClientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 90));
+        btnModoModificar.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoModificar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoModificar.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoModificar.setText("Modificar");
+        btnModoModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoModificarMouseClicked(evt);
+            }
+        });
+        barPaneAuto.add(btnModoModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 90, 30));
+
+        autosPane.add(barPaneAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        autoFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
+        autoFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        autosPane.add(autoFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
 
         bg.add(autosPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        ventasPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barPaneVentas.setBackground(new java.awt.Color(72, 58, 125));
+        barPaneVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barPaneVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtVentasTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtVentasTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtVentasTitulo.setText("Ventas");
+        barPaneVentas.add(txtVentasTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        txtModoVentas.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtModoVentas.setForeground(new java.awt.Color(240, 240, 240));
+        txtModoVentas.setText("MODO REGISTRO");
+        barPaneVentas.add(txtModoVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        btnModoRegistrarVentas.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoRegistrarVentas.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoRegistrarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoRegistrarVentas.setText("Registrar");
+        btnModoRegistrarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoRegistrarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoRegistrarVentasMouseClicked(evt);
+            }
+        });
+        barPaneVentas.add(btnModoRegistrarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 90, 30));
+
+        btnModoConsultarVentas.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoConsultarVentas.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoConsultarVentas.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoConsultarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoConsultarVentas.setText("Consultar");
+        btnModoConsultarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoConsultarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoConsultarVentasMouseClicked(evt);
+            }
+        });
+        barPaneVentas.add(btnModoConsultarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 90, 30));
+
+        btnModoEliminarVentas.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoEliminarVentas.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoEliminarVentas.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoEliminarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoEliminarVentas.setText("Eliminar");
+        btnModoEliminarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoEliminarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoEliminarVentasMouseClicked(evt);
+            }
+        });
+        barPaneVentas.add(btnModoEliminarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 90, 30));
+
+        btnModoModificarVentas.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoModificarVentas.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoModificarVentas.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoModificarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoModificarVentas.setText("Modificar");
+        btnModoModificarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoModificarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoModificarVentasMouseClicked(evt);
+            }
+        });
+        barPaneVentas.add(btnModoModificarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 90, 30));
+
+        ventasPane.add(barPaneVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        ventasFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
+        ventasFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventasPane.add(ventasFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
+
+        bg.add(ventasPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        vendedoresPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barPaneVendedores.setBackground(new java.awt.Color(72, 58, 125));
+        barPaneVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barPaneVendedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtVendedoresTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtVendedoresTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtVendedoresTitulo.setText("Vendedores");
+        barPaneVendedores.add(txtVendedoresTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        txtModoVendedores.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtModoVendedores.setForeground(new java.awt.Color(240, 240, 240));
+        txtModoVendedores.setText("MODO REGISTRO");
+        barPaneVendedores.add(txtModoVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        btnModoRegistrarVendedores.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoRegistrarVendedores.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoRegistrarVendedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoRegistrarVendedores.setText("Registrar");
+        btnModoRegistrarVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoRegistrarVendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoRegistrarVendedoresMouseClicked(evt);
+            }
+        });
+        barPaneVendedores.add(btnModoRegistrarVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 90, 30));
+
+        btnModoConsultarVendedores.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoConsultarVendedores.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoConsultarVendedores.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoConsultarVendedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoConsultarVendedores.setText("Consultar");
+        btnModoConsultarVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoConsultarVendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoConsultarVendedoresMouseClicked(evt);
+            }
+        });
+        barPaneVendedores.add(btnModoConsultarVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 90, 30));
+
+        btnModoEliminarVendedores.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoEliminarVendedores.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoEliminarVendedores.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoEliminarVendedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoEliminarVendedores.setText("Eliminar");
+        btnModoEliminarVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoEliminarVendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoEliminarVendedoresMouseClicked(evt);
+            }
+        });
+        barPaneVendedores.add(btnModoEliminarVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 90, 30));
+
+        btnModoModificarVendedores.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoModificarVendedores.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoModificarVendedores.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoModificarVendedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoModificarVendedores.setText("Modificar");
+        btnModoModificarVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoModificarVendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoModificarVendedoresMouseClicked(evt);
+            }
+        });
+        barPaneVendedores.add(btnModoModificarVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 90, 30));
+
+        vendedoresPane.add(barPaneVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        vendedoresFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
+        vendedoresFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        vendedoresPane.add(vendedoresFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
+
+        bg.add(vendedoresPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        clientesPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barPaneClientes.setBackground(new java.awt.Color(72, 58, 125));
+        barPaneClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barPaneClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtClientesTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtClientesTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtClientesTitulo.setText("Clientes");
+        barPaneClientes.add(txtClientesTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        txtModoClientes.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtModoClientes.setForeground(new java.awt.Color(240, 240, 240));
+        txtModoClientes.setText("MODO REGISTRO");
+        barPaneClientes.add(txtModoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        btnModoRegistrarClientes.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoRegistrarClientes.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoRegistrarClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoRegistrarClientes.setText("Registrar");
+        btnModoRegistrarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoRegistrarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoRegistrarClientesMouseClicked(evt);
+            }
+        });
+        barPaneClientes.add(btnModoRegistrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 90, 30));
+
+        btnModoConsultarClientes.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoConsultarClientes.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoConsultarClientes.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoConsultarClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoConsultarClientes.setText("Consultar");
+        btnModoConsultarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoConsultarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoConsultarClientesMouseClicked(evt);
+            }
+        });
+        barPaneClientes.add(btnModoConsultarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 90, 30));
+
+        btnModoEliminarClientes.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoEliminarClientes.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoEliminarClientes.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoEliminarClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoEliminarClientes.setText("Eliminar");
+        btnModoEliminarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoEliminarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoEliminarClientesMouseClicked(evt);
+            }
+        });
+        barPaneClientes.add(btnModoEliminarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 90, 30));
+
+        btnModoModificarClientes.setBackground(new java.awt.Color(72, 58, 125));
+        btnModoModificarClientes.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnModoModificarClientes.setForeground(new java.awt.Color(230, 230, 230));
+        btnModoModificarClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModoModificarClientes.setText("Modificar");
+        btnModoModificarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModoModificarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModoModificarClientesMouseClicked(evt);
+            }
+        });
+        barPaneClientes.add(btnModoModificarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 90, 30));
+
+        clientesPane.add(barPaneClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        clientesFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
+        clientesFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        clientesPane.add(clientesFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
+
+        bg.add(clientesPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        reportesPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barPaneReportes.setBackground(new java.awt.Color(72, 58, 125));
+        barPaneReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barPaneReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtReportesTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtReportesTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtReportesTitulo.setText("Generar");
+        barPaneReportes.add(txtReportesTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        txtModoReportes.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtModoReportes.setForeground(new java.awt.Color(240, 240, 240));
+        txtModoReportes.setText("REPORTES Y GRAFICOS");
+        barPaneReportes.add(txtModoReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        reportesPane.add(barPaneReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        reportesFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
+        reportesFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        reportesPane.add(reportesFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
+
+        bg.add(reportesPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,14 +646,206 @@ public class VentanaInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnClientes1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientes1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientes1MouseEntered
+    // -----------------------------------------------------------------------
+    // Eventos de la barra de NAVEGACION
+    // -----------------------------------------------------------------------
 
-    private void btnClientes1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientes1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientes1MouseExited
+    private void btn_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closeMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btn_closeMouseClicked
 
+    private void btn_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_minimizeMouseClicked
+        this.setExtendedState(ICONIFIED);
+        this.setExtendedState(1);
+    }//GEN-LAST:event_btn_minimizeMouseClicked
+  
+    private void barraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_barraMousePressed
+
+    private void barraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraMouseDragged
+
+    // -----------------------------------------------------------------------
+    // Eventos del MENU
+    // -----------------------------------------------------------------------
+
+    private void btnAutosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosMouseEntered
+        btnAutos.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnAutosMouseEntered
+
+    private void btnAutosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosMouseExited
+        btnAutos.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnAutosMouseExited
+
+    private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
+        btnClientes.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnClientesMouseEntered
+
+    private void btnClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseExited
+        btnClientes.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnClientesMouseExited
+
+    private void btnVendedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedoresMouseEntered
+        btnVendedores.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnVendedoresMouseEntered
+
+    private void btnVendedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedoresMouseExited
+        btnVendedores.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnVendedoresMouseExited
+
+    private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
+        btnVentas.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnVentasMouseEntered
+
+    private void btnVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseExited
+        btnVentas.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnVentasMouseExited
+
+    private void btnReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseEntered
+        btnReportes.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnReportesMouseEntered
+
+    private void btnReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseExited
+        btnReportes.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnReportesMouseExited
+
+    // -----------------------------------------------------------------------
+    // Eventos de CLICK subMenu AUTOS
+    // -----------------------------------------------------------------------
+
+    private void btnModoRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoRegistrarMouseClicked
+        txtModoAutos.setText("MODO REGISTRO");
+    }//GEN-LAST:event_btnModoRegistrarMouseClicked
+
+
+    private void btnModoModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoModificarMouseClicked
+        txtModoAutos.setText("MODO EDICION");
+
+    }//GEN-LAST:event_btnModoModificarMouseClicked
+
+    private void btnModoEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarMouseClicked
+        txtModoAutos.setText("MODO INSANO");
+
+    }//GEN-LAST:event_btnModoEliminarMouseClicked
+
+    private void btnModoConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarMouseClicked
+        txtModoAutos.setText("MODO BUSQUEDA");
+
+    }//GEN-LAST:event_btnModoConsultarMouseClicked
+
+    // -----------------------------------------------------------------------
+    // Eventos de CLICK subMenu CLIENTES
+    // -----------------------------------------------------------------------
+
+    private void btnModoRegistrarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoRegistrarClientesMouseClicked
+        txtModoClientes.setText("MODO REGISTRO");
+    }//GEN-LAST:event_btnModoRegistrarClientesMouseClicked
+
+    private void btnModoConsultarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarClientesMouseClicked
+        txtModoClientes.setText("MODO BUSQUEDA");
+    }//GEN-LAST:event_btnModoConsultarClientesMouseClicked
+
+    private void btnModoEliminarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarClientesMouseClicked
+        txtModoClientes.setText("MODO INSANO");
+    }//GEN-LAST:event_btnModoEliminarClientesMouseClicked
+
+    private void btnModoModificarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoModificarClientesMouseClicked
+        txtModoClientes.setText("MODO EDICION");
+    }//GEN-LAST:event_btnModoModificarClientesMouseClicked
+
+    // -----------------------------------------------------------------------
+    // Eventos de CLICK subMenu VENDEDORES
+    // -----------------------------------------------------------------------
+
+    private void btnModoRegistrarVendedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoRegistrarVendedoresMouseClicked
+        txtModoVendedores.setText("MODO REGISTRO");
+    }//GEN-LAST:event_btnModoRegistrarVendedoresMouseClicked
+
+    private void btnModoConsultarVendedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarVendedoresMouseClicked
+        txtModoVendedores.setText("MODO BUSQUEDA");
+    }//GEN-LAST:event_btnModoConsultarVendedoresMouseClicked
+
+    private void btnModoEliminarVendedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarVendedoresMouseClicked
+        txtModoVendedores.setText("MODO INSANO");
+
+    }//GEN-LAST:event_btnModoEliminarVendedoresMouseClicked
+    
+    private void btnModoModificarVendedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoModificarVendedoresMouseClicked
+        txtModoVendedores.setText("MODO EDICION");
+    }//GEN-LAST:event_btnModoModificarVendedoresMouseClicked
+
+    // -----------------------------------------------------------------------
+    // Eventos de CLICK subMenu VENTAS
+    // -----------------------------------------------------------------------
+    
+    private void btnModoRegistrarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoRegistrarVentasMouseClicked
+        txtModoVentas.setText("MODO REGISTRO");
+    }//GEN-LAST:event_btnModoRegistrarVentasMouseClicked
+
+    private void btnModoConsultarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarVentasMouseClicked
+        txtModoVentas.setText("MODO BUSQUEDA");
+    }//GEN-LAST:event_btnModoConsultarVentasMouseClicked
+
+    private void btnModoEliminarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarVentasMouseClicked
+        txtModoVentas.setText("MODO INSANO");
+    }//GEN-LAST:event_btnModoEliminarVentasMouseClicked
+
+    private void btnModoModificarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoModificarVentasMouseClicked
+        txtModoVentas.setText("MODO EDICION");
+    }//GEN-LAST:event_btnModoModificarVentasMouseClicked
+
+    // -----------------------------------------------------------------------
+    // Eventos OCULTAR PANES
+    // -----------------------------------------------------------------------
+    
+    private void btnAutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosMouseClicked
+        ocultarSubMenuPanes();
+        autosPane.setVisible(true); 
+    }//GEN-LAST:event_btnAutosMouseClicked
+
+    private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
+        ocultarSubMenuPanes();
+        clientesPane.setVisible(true); 
+    }//GEN-LAST:event_btnClientesMouseClicked
+
+    private void btnVendedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedoresMouseClicked
+        ocultarSubMenuPanes();
+        vendedoresPane.setVisible(true); 
+    }//GEN-LAST:event_btnVendedoresMouseClicked
+
+    private void btnVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseClicked
+        ocultarSubMenuPanes();
+        ventasPane.setVisible(true); 
+    }//GEN-LAST:event_btnVentasMouseClicked
+
+    private void btnReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseClicked
+        ocultarSubMenuPanes();
+        reportesPane.setVisible(true); 
+    }//GEN-LAST:event_btnReportesMouseClicked
+
+    // -----------------------------------------------------------------------
+    // METODOS Y VARIABLES PROPIOS
+    // -----------------------------------------------------------------------
+    
+    int xMouse, yMouse;
+    
+    private void ocultarSubMenuPanes(){
+        ventasPane.setVisible(false);
+        clientesPane.setVisible(false);
+        autosPane.setVisible(false);
+        vendedoresPane.setVisible(false);
+        reportesPane.setVisible(false);
+    }
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -311,34 +882,66 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel autoFormularioPane;
     private javax.swing.JPanel autosPane;
+    private javax.swing.JPanel barPaneAuto;
+    private javax.swing.JPanel barPaneClientes;
+    private javax.swing.JPanel barPaneReportes;
+    private javax.swing.JPanel barPaneVendedores;
+    private javax.swing.JPanel barPaneVentas;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel btnAutos;
     private javax.swing.JPanel btnClientes;
-    private javax.swing.JPanel btnClientes1;
-    private javax.swing.JLabel btnConsultar;
-    private javax.swing.JLabel btnConsultar1;
-    private javax.swing.JLabel btnConsultar2;
-    private javax.swing.JLabel btnConsultar3;
+    private javax.swing.JLabel btnModoConsultar;
+    private javax.swing.JLabel btnModoConsultarClientes;
+    private javax.swing.JLabel btnModoConsultarVendedores;
+    private javax.swing.JLabel btnModoConsultarVentas;
+    private javax.swing.JLabel btnModoEliminar;
+    private javax.swing.JLabel btnModoEliminarClientes;
+    private javax.swing.JLabel btnModoEliminarVendedores;
+    private javax.swing.JLabel btnModoEliminarVentas;
+    private javax.swing.JLabel btnModoModificar;
+    private javax.swing.JLabel btnModoModificarClientes;
+    private javax.swing.JLabel btnModoModificarVendedores;
+    private javax.swing.JLabel btnModoModificarVentas;
+    private javax.swing.JLabel btnModoRegistrar;
+    private javax.swing.JLabel btnModoRegistrarClientes;
+    private javax.swing.JLabel btnModoRegistrarVendedores;
+    private javax.swing.JLabel btnModoRegistrarVentas;
     private javax.swing.JPanel btnReportes;
     private javax.swing.JPanel btnVendedores;
     private javax.swing.JPanel btnVentas;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
+    private javax.swing.JPanel clientesFormularioPane;
+    private javax.swing.JPanel clientesPane;
     private javax.swing.JPanel cuadroDec;
     private javax.swing.JPanel cuadroDec2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel menu;
+    private javax.swing.JPanel reportesFormularioPane;
+    private javax.swing.JPanel reportesPane;
     private javax.swing.JLabel txtAutos;
     private javax.swing.JLabel txtAutos1;
     private javax.swing.JLabel txtAutos2;
     private javax.swing.JLabel txtAutos3;
     private javax.swing.JLabel txtAutosTitulo;
     private javax.swing.JLabel txtClientes;
+    private javax.swing.JLabel txtClientesTitulo;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtModoAutos;
+    private javax.swing.JLabel txtModoClientes;
+    private javax.swing.JLabel txtModoReportes;
+    private javax.swing.JLabel txtModoVendedores;
+    private javax.swing.JLabel txtModoVentas;
+    private javax.swing.JLabel txtReportesTitulo;
+    private javax.swing.JLabel txtVendedoresTitulo;
+    private javax.swing.JLabel txtVentasTitulo;
+    private javax.swing.JPanel vendedoresFormularioPane;
+    private javax.swing.JPanel vendedoresPane;
+    private javax.swing.JPanel ventasFormularioPane;
+    private javax.swing.JPanel ventasPane;
     // End of variables declaration//GEN-END:variables
 }
