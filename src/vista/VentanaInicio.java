@@ -26,23 +26,254 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg = new javax.swing.JPanel();
+        menu = new javax.swing.JPanel();
+        txtLogo = new javax.swing.JLabel();
+        cuadroDec = new javax.swing.JPanel();
+        cuadroDec2 = new javax.swing.JPanel();
+        btnAutos = new javax.swing.JPanel();
+        txtAutos = new javax.swing.JLabel();
+        btnClientes = new javax.swing.JPanel();
+        txtClientes = new javax.swing.JLabel();
+        btnVendedores = new javax.swing.JPanel();
+        txtAutos1 = new javax.swing.JLabel();
+        btnVentas = new javax.swing.JPanel();
+        txtAutos2 = new javax.swing.JLabel();
+        btnReportes = new javax.swing.JPanel();
+        txtAutos3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        barra = new javax.swing.JPanel();
+        btn_close = new javax.swing.JLabel();
+        btn_minimize = new javax.swing.JLabel();
+        autosPane = new javax.swing.JPanel();
+        btnClientes1 = new javax.swing.JPanel();
+        txtAutosTitulo = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JLabel();
+        txtModoAutos = new javax.swing.JLabel();
+        btnConsultar1 = new javax.swing.JLabel();
+        btnConsultar2 = new javax.swing.JLabel();
+        btnConsultar3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menu.setBackground(new java.awt.Color(35, 29, 56));
+        menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtLogo.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(240, 240, 240));
+        txtLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtLogo.setText("AutAmi");
+        menu.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 140, 60));
+
+        cuadroDec.setBackground(new java.awt.Color(230, 230, 230));
+
+        javax.swing.GroupLayout cuadroDecLayout = new javax.swing.GroupLayout(cuadroDec);
+        cuadroDec.setLayout(cuadroDecLayout);
+        cuadroDecLayout.setHorizontalGroup(
+            cuadroDecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        cuadroDecLayout.setVerticalGroup(
+            cuadroDecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        menu.add(cuadroDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 30, 30));
+
+        cuadroDec2.setBackground(new java.awt.Color(8, 117, 207));
+
+        javax.swing.GroupLayout cuadroDec2Layout = new javax.swing.GroupLayout(cuadroDec2);
+        cuadroDec2.setLayout(cuadroDec2Layout);
+        cuadroDec2Layout.setHorizontalGroup(
+            cuadroDec2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        cuadroDec2Layout.setVerticalGroup(
+            cuadroDec2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        menu.add(cuadroDec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 30, 30));
+
+        btnAutos.setBackground(new java.awt.Color(54, 42, 99));
+        btnAutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAutos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAutos.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtAutos.setText("     Automoviles");
+        btnAutos.add(txtAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
+
+        menu.add(btnAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 250, 50));
+
+        btnClientes.setBackground(new java.awt.Color(54, 42, 99));
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtClientes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtClientes.setForeground(new java.awt.Color(240, 240, 240));
+        txtClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtClientes.setText("     Clientes");
+        btnClientes.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
+
+        menu.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 250, 50));
+
+        btnVendedores.setBackground(new java.awt.Color(54, 42, 99));
+        btnVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVendedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutos1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAutos1.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutos1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtAutos1.setText("     Vendedores");
+        btnVendedores.add(txtAutos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
+
+        menu.add(btnVendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 50));
+
+        btnVentas.setBackground(new java.awt.Color(54, 42, 99));
+        btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutos2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAutos2.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutos2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtAutos2.setText("     Ventas");
+        btnVentas.add(txtAutos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
+
+        menu.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 250, 50));
+
+        btnReportes.setBackground(new java.awt.Color(54, 42, 99));
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutos3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAutos3.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutos3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtAutos3.setText("     Generar reportes o graficos");
+        btnReportes.add(txtAutos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 240, 40));
+
+        menu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 250, 50));
+
+        jPanel1.setBackground(new java.awt.Color(69, 60, 103));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        menu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 250, 20));
+
+        bg.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
+
+        barra.setBackground(new java.awt.Color(54, 42, 99));
+        barra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_close.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_close.setForeground(new java.awt.Color(240, 240, 240));
+        btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_close.setText("X");
+        btn_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_close.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        barra.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 0, 30, 30));
+
+        btn_minimize.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_minimize.setForeground(new java.awt.Color(240, 240, 240));
+        btn_minimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_minimize.setText("–");
+        btn_minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_minimize.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        barra.add(btn_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 30, 30));
+
+        bg.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
+
+        autosPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnClientes1.setBackground(new java.awt.Color(54, 42, 99));
+        btnClientes1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClientes1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnClientes1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnClientes1MouseExited(evt);
+            }
+        });
+        btnClientes1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutosTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtAutosTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutosTitulo.setText("Automoviles");
+        btnClientes1.add(txtAutosTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 30));
+
+        btnConsultar.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnConsultar.setForeground(new java.awt.Color(230, 230, 230));
+        btnConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConsultar.setText("Registrar");
+        btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 90, 30));
+
+        txtModoAutos.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtModoAutos.setForeground(new java.awt.Color(240, 240, 240));
+        txtModoAutos.setText("MODO REGISTRO");
+        btnClientes1.add(txtModoAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, 60));
+
+        btnConsultar1.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnConsultar1.setForeground(new java.awt.Color(230, 230, 230));
+        btnConsultar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConsultar1.setText("Consultar");
+        btnConsultar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes1.add(btnConsultar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 90, 30));
+
+        btnConsultar2.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnConsultar2.setForeground(new java.awt.Color(230, 230, 230));
+        btnConsultar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConsultar2.setText("Eliminar");
+        btnConsultar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes1.add(btnConsultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 90, 30));
+
+        btnConsultar3.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        btnConsultar3.setForeground(new java.awt.Color(230, 230, 230));
+        btnConsultar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConsultar3.setText("Modificar");
+        btnConsultar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes1.add(btnConsultar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 90, 30));
+
+        autosPane.add(btnClientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 90));
+
+        bg.add(autosPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnClientes1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientes1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientes1MouseEntered
+
+    private void btnClientes1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientes1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientes1MouseExited
 
     /**
      * @param args the command line arguments
@@ -80,5 +311,34 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel autosPane;
+    private javax.swing.JPanel barra;
+    private javax.swing.JPanel bg;
+    private javax.swing.JPanel btnAutos;
+    private javax.swing.JPanel btnClientes;
+    private javax.swing.JPanel btnClientes1;
+    private javax.swing.JLabel btnConsultar;
+    private javax.swing.JLabel btnConsultar1;
+    private javax.swing.JLabel btnConsultar2;
+    private javax.swing.JLabel btnConsultar3;
+    private javax.swing.JPanel btnReportes;
+    private javax.swing.JPanel btnVendedores;
+    private javax.swing.JPanel btnVentas;
+    private javax.swing.JLabel btn_close;
+    private javax.swing.JLabel btn_minimize;
+    private javax.swing.JPanel cuadroDec;
+    private javax.swing.JPanel cuadroDec2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel menu;
+    private javax.swing.JLabel txtAutos;
+    private javax.swing.JLabel txtAutos1;
+    private javax.swing.JLabel txtAutos2;
+    private javax.swing.JLabel txtAutos3;
+    private javax.swing.JLabel txtAutosTitulo;
+    private javax.swing.JLabel txtClientes;
+    private javax.swing.JLabel txtLogo;
+    private javax.swing.JLabel txtModoAutos;
     // End of variables declaration//GEN-END:variables
 }
