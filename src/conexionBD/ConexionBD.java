@@ -60,8 +60,8 @@ public class ConexionBD {
         int res = 0;
         try {
 
-            String filtro = "INSERT INTO automoviles(idFabricantes, modelo, marca, precio, paisFabricacion, numeroPuertas, color, numeroAcientos, kilometraje) VALUES (?,?,?,?,?,?,?,?,?)";
-            pstm = conexion.prepareStatement(filtro);
+            String consulta = "INSERT INTO automoviles(idFabricantes, modelo, marca, precio, paisFabricacion, numeroPuertas, color, numeroAcientos, kilometraje) VALUES (?,?,?,?,?,?,?,?,?)";
+            pstm = conexion.prepareStatement(consulta);
 
             pstm.setInt(1, a.getIdFabricante());
             pstm.setString(2, a.getMarca());
@@ -87,12 +87,31 @@ public class ConexionBD {
         }
 
     }
-    
-    /*public static void main(String[] args) {
+
+    public static boolean bajaAutomovil(Automovil a) {
+        try {
+            String consulta = "DELETE FROM automoviles WHERE idAutomoviles=?";
+            pstm = conexion.prepareStatement(consulta);
+            pstm.setInt(1, a.getIdAutomovil());
+            int res = pstm.executeUpdate();
+
+            if (res != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException error) {
+            error.printStackTrace();
+        }
+        return false;
+    }
+    /*
+    public static void main(String[] args) {
         ConexionBD.getConexion();
         
         Automovil a1 = new Automovil();
-        ConexionBD.altaAutomovil(new Automovil(0, 1,"20903","chevrolet",200.0, "mexico", (byte)2, "rojo", (byte)2, 1000));
-    }*/
-
-}
+        a1.setIdAutomovil(3);
+        ConexionBD.bajaAutomovil(new Automovil(3, 1,"20903","chevrolet",200.0, "mexico", (byte)2, "rojo", (byte)2, 1000));
+    }/*
+     }
