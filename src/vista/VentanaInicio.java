@@ -76,27 +76,29 @@ public class VentanaInicio extends javax.swing.JFrame {
         btnModoEliminar = new javax.swing.JLabel();
         btnModoModificar = new javax.swing.JLabel();
         autoFormularioPane = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtIntroduceDatos = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JLabel();
+        txtKilometraje = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JLabel();
+        txtMarca = new javax.swing.JLabel();
+        cajaKilometraje = new javax.swing.JTextField();
+        cajaFabricante = new javax.swing.JTextField();
+        cajaModelo = new javax.swing.JTextField();
+        comboColor = new javax.swing.JComboBox<>();
+        txtId = new javax.swing.JLabel();
+        txtPais = new javax.swing.JLabel();
+        txtPuertas = new javax.swing.JLabel();
+        txtColor = new javax.swing.JLabel();
+        comboMarca = new javax.swing.JComboBox<>();
+        comboPaisFabricacion = new javax.swing.JComboBox<>();
+        spinNumeroAsientos = new javax.swing.JSpinner();
+        spinNumeroPuertas = new javax.swing.JSpinner();
+        txtAsientos = new javax.swing.JLabel();
+        cajaPrecio = new javax.swing.JTextField();
         scrollTablaAutos = new javax.swing.JScrollPane();
         tablaAutos = new javax.swing.JTable();
+        btnAgregar = new javax.swing.JPanel();
+        txtAgregar = new javax.swing.JLabel();
         inicioPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -411,77 +413,77 @@ public class VentanaInicio extends javax.swing.JFrame {
         autoFormularioPane.setBackground(new java.awt.Color(250, 250, 250));
         autoFormularioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(90, 90, 90));
-        jLabel1.setText("Introduce los datos solicitados");
-        autoFormularioPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        txtIntroduceDatos.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtIntroduceDatos.setForeground(new java.awt.Color(90, 90, 90));
+        txtIntroduceDatos.setText("Introduce los datos solicitados");
+        autoFormularioPane.add(txtIntroduceDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel4.setText("Precio");
-        autoFormularioPane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 140, 30));
+        txtPrecio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPrecio.setText("Precio");
+        autoFormularioPane.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 140, 30));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel5.setText("Kilometraje");
-        autoFormularioPane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 140, 30));
+        txtKilometraje.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtKilometraje.setText("Kilometraje");
+        autoFormularioPane.add(txtKilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 140, 30));
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel6.setText("Modelo");
-        autoFormularioPane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 140, 30));
+        txtModelo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtModelo.setText("Modelo");
+        autoFormularioPane.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 140, 30));
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel7.setText("Marca");
-        autoFormularioPane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 140, 30));
+        txtMarca.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtMarca.setText("Marca");
+        autoFormularioPane.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 140, 30));
 
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jTextField1.setText("jTextField1");
-        jTextField1.setMargin(new java.awt.Insets(2, 8, 2, 8));
-        autoFormularioPane.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 230, 140, 30));
+        cajaKilometraje.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cajaKilometraje.setText("jTextField1");
+        cajaKilometraje.setMargin(new java.awt.Insets(2, 8, 2, 8));
+        autoFormularioPane.add(cajaKilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 230, 140, 30));
 
-        jTextField2.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jTextField2.setText("jTextField1");
-        jTextField2.setMargin(new java.awt.Insets(2, 8, 2, 8));
-        autoFormularioPane.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 140, 30));
+        cajaFabricante.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cajaFabricante.setText("jTextField1");
+        cajaFabricante.setMargin(new java.awt.Insets(2, 8, 2, 8));
+        autoFormularioPane.add(cajaFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 140, 30));
 
-        jTextField3.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jTextField3.setText("jTextField1");
-        jTextField3.setMargin(new java.awt.Insets(2, 8, 2, 8));
-        autoFormularioPane.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 140, 30));
+        cajaModelo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cajaModelo.setText("jTextField1");
+        cajaModelo.setMargin(new java.awt.Insets(2, 8, 2, 8));
+        autoFormularioPane.add(cajaModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 140, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        autoFormularioPane.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 140, 30));
+        comboColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        autoFormularioPane.add(comboColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 140, 30));
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel8.setText("ID del fabricante");
-        autoFormularioPane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 140, 30));
+        txtId.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtId.setText("ID del fabricante");
+        autoFormularioPane.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 140, 30));
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel9.setText("Pais de fabricacion");
-        autoFormularioPane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 140, 30));
+        txtPais.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPais.setText("Pais de fabricacion");
+        autoFormularioPane.add(txtPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 140, 30));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel10.setText("Numero de puertas");
-        autoFormularioPane.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 140, 30));
+        txtPuertas.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPuertas.setText("Numero de puertas");
+        autoFormularioPane.add(txtPuertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 140, 30));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel11.setText("Color");
-        autoFormularioPane.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 140, 30));
+        txtColor.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtColor.setText("Color");
+        autoFormularioPane.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 140, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        autoFormularioPane.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 140, 30));
+        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        autoFormularioPane.add(comboMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 140, 30));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        autoFormularioPane.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 140, 30));
-        autoFormularioPane.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 140, 30));
-        autoFormularioPane.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 140, 30));
+        comboPaisFabricacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        autoFormularioPane.add(comboPaisFabricacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 140, 30));
+        autoFormularioPane.add(spinNumeroAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 140, 30));
+        autoFormularioPane.add(spinNumeroPuertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 140, 30));
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel12.setText("Numero de acientos");
-        autoFormularioPane.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 140, 30));
+        txtAsientos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtAsientos.setText("Numero de acientos");
+        autoFormularioPane.add(txtAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 140, 30));
 
-        jTextField4.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jTextField4.setText("jTextField1");
-        jTextField4.setMargin(new java.awt.Insets(2, 8, 2, 8));
-        autoFormularioPane.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 140, 30));
+        cajaPrecio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cajaPrecio.setText("jTextField1");
+        cajaPrecio.setMargin(new java.awt.Insets(2, 8, 2, 8));
+        autoFormularioPane.add(cajaPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 140, 30));
 
         tablaAutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -496,7 +498,35 @@ public class VentanaInicio extends javax.swing.JFrame {
         ));
         scrollTablaAutos.setViewportView(tablaAutos);
 
-        autoFormularioPane.add(scrollTablaAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 950, 250));
+        autoFormularioPane.add(scrollTablaAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 950, 170));
+
+        btnAgregar.setBackground(new java.awt.Color(72, 58, 125));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+        });
+
+        txtAgregar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtAgregar.setForeground(new java.awt.Color(240, 240, 240));
+        txtAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtAgregar.setText("AGREGAR");
+
+        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
+        btnAgregar.setLayout(btnAgregarLayout);
+        btnAgregarLayout.setHorizontalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        btnAgregarLayout.setVerticalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        autoFormularioPane.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 300, 140, 30));
 
         autosPane.add(autoFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
 
@@ -1006,6 +1036,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         reportesPane.setVisible(true); 
     }//GEN-LAST:event_btnReportesMouseClicked
 
+    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
+        btnAgregar.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnAgregarMouseEntered
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        btnAgregar.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
     // -----------------------------------------------------------------------
     // METODOS Y VARIABLES PROPIOS
     // -----------------------------------------------------------------------
@@ -1070,6 +1108,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel barPaneVentas;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnAutos;
     private javax.swing.JPanel btnClientes;
     private javax.swing.JPanel btnFabricantes;
@@ -1093,8 +1132,15 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel btnVentas;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
+    private javax.swing.JTextField cajaFabricante;
+    private javax.swing.JTextField cajaKilometraje;
+    private javax.swing.JTextField cajaModelo;
+    private javax.swing.JTextField cajaPrecio;
     private javax.swing.JPanel clientesFormularioPane;
     private javax.swing.JPanel clientesPane;
+    private javax.swing.JComboBox<String> comboColor;
+    private javax.swing.JComboBox<String> comboMarca;
+    private javax.swing.JComboBox<String> comboPaisFabricacion;
     private javax.swing.JPanel cuadroDec;
     private javax.swing.JPanel cuadroDec1;
     private javax.swing.JPanel cuadroDec2;
@@ -1102,45 +1148,39 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel fabricantesPane;
     private javax.swing.JPanel fabricnatesFormularioPane;
     private javax.swing.JPanel inicioPane;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel reportesFormularioPane;
     private javax.swing.JPanel reportesPane;
     private javax.swing.JScrollPane scrollTablaAutos;
+    private javax.swing.JSpinner spinNumeroAsientos;
+    private javax.swing.JSpinner spinNumeroPuertas;
     private javax.swing.JTable tablaAutos;
+    private javax.swing.JLabel txtAgregar;
+    private javax.swing.JLabel txtAsientos;
     private javax.swing.JLabel txtAutos;
     private javax.swing.JLabel txtAutosTitulo;
     private javax.swing.JLabel txtClientes;
     private javax.swing.JLabel txtClientesTitulo;
+    private javax.swing.JLabel txtColor;
     private javax.swing.JLabel txtFabricantes;
     private javax.swing.JLabel txtFabricantesTitulo;
+    private javax.swing.JLabel txtId;
+    private javax.swing.JLabel txtIntroduceDatos;
+    private javax.swing.JLabel txtKilometraje;
     private javax.swing.JLabel txtLogo;
+    private javax.swing.JLabel txtMarca;
+    private javax.swing.JLabel txtModelo;
     private javax.swing.JLabel txtModoAutos;
     private javax.swing.JLabel txtModoClientes;
     private javax.swing.JLabel txtModoFabricantes;
     private javax.swing.JLabel txtModoReportes;
     private javax.swing.JLabel txtModoVentas;
+    private javax.swing.JLabel txtPais;
+    private javax.swing.JLabel txtPrecio;
+    private javax.swing.JLabel txtPuertas;
     private javax.swing.JLabel txtReportes;
     private javax.swing.JLabel txtReportesTitulo;
     private javax.swing.JLabel txtVentas;
