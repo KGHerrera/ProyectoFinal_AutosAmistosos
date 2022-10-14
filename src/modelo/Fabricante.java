@@ -8,16 +8,16 @@ package modelo;
  *
  * @author Herrera
  */
-public class Fabricantes {
+public class Fabricante {
     private int idFabricante;
     private String nombre;
     private String direccion;
     private String telefono;
 
-    public Fabricantes() {
+    public Fabricante() {
     }
 
-    public Fabricantes(int idFabricante, String nombre, String direccion, String telefono) {
+    public Fabricante(int idFabricante, String nombre, String direccion, String telefono) {
         this.idFabricante = idFabricante;
         this.nombre = nombre;
         this.direccion = direccion;

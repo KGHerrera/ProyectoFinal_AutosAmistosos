@@ -8,38 +8,48 @@ package modelo;
  *
  * @author Herrera
  */
-public class Automoviles {
-    private int idAutomoviles;
+public class Automovil {
+    private int idAutomovil;
+    private int idFabricante;
     private String modelo;
     private String marca;
     private double precio;
     private String paisFabricacion;
-    private byte numeroPuertos;
+    private byte numeroPuertas;
     private String color;
     private byte numeroAcientos;
     private int kilometraje;
 
-    public Automoviles() {
+    public Automovil() {
     }
-    
-    public Automoviles(int idAutomoviles, String modelo, String marca, double precio, String paisFabricacion, byte numeroPuertos, String color, byte numeroAcientos, int kilometraje) {
-        this.idAutomoviles = idAutomoviles;
+
+    public Automovil(int idAutomoviles, int idFabricantes, String modelo, String marca, double precio, String paisFabricacion, byte numeroPuertos, String color, byte numeroAcientos, int kilometraje) {
+        this.idAutomovil = idAutomoviles;
+        this.idFabricante = idFabricantes;
         this.modelo = modelo;
         this.marca = marca;
         this.precio = precio;
         this.paisFabricacion = paisFabricacion;
-        this.numeroPuertos = numeroPuertos;
+        this.numeroPuertas = numeroPuertos;
         this.color = color;
         this.numeroAcientos = numeroAcientos;
         this.kilometraje = kilometraje;
     }
 
-    public int getIdAutomoviles() {
-        return idAutomoviles;
+    public int getIdAutomovil() {
+        return idAutomovil;
     }
 
-    public void setIdAutomoviles(int idAutomoviles) {
-        this.idAutomoviles = idAutomoviles;
+    public void setIdAutomovil(int idAutomovil) {
+        this.idAutomovil = idAutomovil;
+    }
+
+    public int getIdFabricante() {
+        return idFabricante;
+    }
+
+    public void setIdFabricante(int idFabricante) {
+        this.idFabricante = idFabricante;
     }
 
     public String getModelo() {
@@ -74,12 +84,12 @@ public class Automoviles {
         this.paisFabricacion = paisFabricacion;
     }
 
-    public byte getNumeroPuertos() {
-        return numeroPuertos;
+    public byte getNumeroPuertas() {
+        return numeroPuertas;
     }
 
-    public void setNumeroPuertos(byte numeroPuertos) {
-        this.numeroPuertos = numeroPuertos;
+    public void setNumeroPuertas(byte numeroPuertas) {
+        this.numeroPuertas = numeroPuertas;
     }
 
     public String getColor() {
@@ -104,10 +114,5 @@ public class Automoviles {
 
     public void setKilometraje(int kilometraje) {
         this.kilometraje = kilometraje;
-    }
-
-    @Override
-    public String toString() {
-        return "Automoviles{" + "idAutomoviles=" + idAutomoviles + ", modelo=" + modelo + ", marca=" + marca + ", precio=" + precio + ", paisFabricacion=" + paisFabricacion + ", numeroPuertos=" + numeroPuertos + ", color=" + color + ", numeroAcientos=" + numeroAcientos + ", kilometraje=" + kilometraje + '}';
     }    
 }

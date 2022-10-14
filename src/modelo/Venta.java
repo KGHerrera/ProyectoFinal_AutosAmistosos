@@ -8,40 +8,40 @@ package modelo;
  *
  * @author Herrera
  */
-public class Ventas {
-    private int idAutomoviles;
-    private int idClientes;
+public class Venta {
+    private int idAutomovil;
+    private int idCliente;
     private String fechaVenta;
     private double precioAuto;
     private double costoTotal;
     private int impuesto;
 
-    public Ventas() {
+    public Venta() {
     }
 
-    public Ventas(int idAutomoviles, int idClientes, String fechaVenta, double precioAuto, double costoTotal, int impuesto) {
-        this.idAutomoviles = idAutomoviles;
-        this.idClientes = idClientes;
+    public Venta(int idAutomoviles, int idClientes, String fechaVenta, double precioAuto, double costoTotal, int impuesto) {
+        this.idAutomovil = idAutomoviles;
+        this.idCliente = idClientes;
         this.fechaVenta = fechaVenta;
         this.precioAuto = precioAuto;
         this.costoTotal = costoTotal;
         this.impuesto = impuesto;
     }
 
-    public int getIdAutomoviles() {
-        return idAutomoviles;
+    public int getIdAutomovil() {
+        return idAutomovil;
     }
 
-    public void setIdAutomoviles(int idAutomoviles) {
-        this.idAutomoviles = idAutomoviles;
+    public void setIdAutomovil(int idAutomovil) {
+        this.idAutomovil = idAutomovil;
     }
 
-    public int getIdClientes() {
-        return idClientes;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdClientes(int idClientes) {
-        this.idClientes = idClientes;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getFechaVenta() {
@@ -78,6 +78,6 @@ public class Ventas {
 
     @Override
     public String toString() {
-        return "Ventas{" + "idAutomoviles=" + idAutomoviles + ", idClientes=" + idClientes + ", fechaVenta=" + fechaVenta + ", precioAuto=" + precioAuto + ", costoTotal=" + costoTotal + ", impuesto=" + impuesto + '}';
+        return "Ventas{" + "idAutomoviles=" + idAutomovil + ", idClientes=" + idCliente + ", fechaVenta=" + fechaVenta + ", precioAuto=" + precioAuto + ", costoTotal=" + costoTotal + ", impuesto=" + impuesto + '}';
     }
 }

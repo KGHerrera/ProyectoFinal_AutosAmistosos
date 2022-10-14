@@ -8,19 +8,19 @@ package modelo;
  *
  * @author Herrera
  */
-public class Clientes {
-    private int idClientes;
+public class Cliente {
+    private int idCliente;
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
     private String direccion;
     private String telefono;
 
-    public Clientes() {
+    public Cliente() {
     }
 
-    public Clientes(int idClientes, String nombre, String primerApellido, String segundoApellido, String direccion, String telefono) {
-        this.idClientes = idClientes;
+    public Cliente(int idClientes, String nombre, String primerApellido, String segundoApellido, String direccion, String telefono) {
+        this.idCliente = idClientes;
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
@@ -28,12 +28,12 @@ public class Clientes {
         this.telefono = telefono;
     }
 
-    public int getIdClientes() {
-        return idClientes;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdClientes(int idClientes) {
-        this.idClientes = idClientes;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -78,6 +78,6 @@ public class Clientes {
 
     @Override
     public String toString() {
-        return "Clientes{" + "idClientes=" + idClientes + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return "Clientes{" + "idClientes=" + idCliente + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }    
 }

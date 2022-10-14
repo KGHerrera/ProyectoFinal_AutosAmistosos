@@ -501,6 +501,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         autoFormularioPane.add(scrollTablaAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 950, 170));
 
         btnAgregar.setBackground(new java.awt.Color(72, 58, 125));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseEntered(evt);
