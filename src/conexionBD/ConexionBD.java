@@ -106,12 +106,48 @@ public class ConexionBD {
         }
         return false;
     }
-    /*
+
+    public static boolean cambioAutomovil(Automovil a) {
+        int res = 0;
+        try {
+            String consulta = "UPDATE automoviles SET "
+                    + "idFabricantes=?, modelo=?, marca=?, precio=?, "
+                    + "paisFabricacion=?, numeroPuertas=?, color=?, "
+                    + "numeroAcientos=?, kilometraje=? WHERE idAutomoviles=?";
+            pstm = conexion.prepareStatement(consulta);
+
+            pstm.setInt(1, a.getIdFabricante());
+            pstm.setString(2, a.getMarca());
+            pstm.setString(3, a.getModelo());
+            pstm.setDouble(4, a.getPrecio());
+            pstm.setString(5, a.getPaisFabricacion());
+            pstm.setByte(6, a.getNumeroPuertas());
+            pstm.setString(7, a.getColor());
+            pstm.setByte(8, a.getNumeroAcientos());
+            pstm.setInt(9, a.getKilometraje());
+            pstm.setInt(10, a.getIdAutomovil());
+
+            res = pstm.executeUpdate();
+
+        } catch (Exception ex) {
+            res = 0;
+            //System.out.println(ex.toString());
+        }
+
+        if (res != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public static void main(String[] args) {
         ConexionBD.getConexion();
         
         Automovil a1 = new Automovil();
         a1.setIdAutomovil(3);
-        ConexionBD.bajaAutomovil(new Automovil(3, 1,"20903","chevrolet",200.0, "mexico", (byte)2, "rojo", (byte)2, 1000));
-    }/*
-     }
+        ConexionBD.cambioAutomovil(new Automovil(5, 1,"a","a",1, "me", (byte)4, "a", (byte)4, 1));
+    }
+
+ }
