@@ -4,6 +4,7 @@
  */
 package vista;
 
+import conexionBD.ConexionBD;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,11 +17,17 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Herrera
  */
 public class VentanaInicio extends javax.swing.JFrame {
+    
+    public void actualizarTablaAutomoviles(){
+        tablaAutos.setModel(ConexionBD.actualizarTablaAutomoviles()); 
+    }
 
     /**
      * Creates new form VentanaInicio
      */
     public VentanaInicio() {
+        ConexionBD.getConexion();
+        
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (ClassNotFoundException ex) {
@@ -38,6 +45,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         inicioPane.setVisible(true);
         tablaAutos.setBorder(BorderFactory.createEmptyBorder());
         scrollTablaAutos.setBorder(BorderFactory.createEmptyBorder());
+        
+        actualizarTablaAutomoviles();
     }
 
     /**
@@ -435,17 +444,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         autoFormularioPane.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 140, 30));
 
         cajaKilometraje.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        cajaKilometraje.setText("jTextField1");
         cajaKilometraje.setMargin(new java.awt.Insets(2, 8, 2, 8));
         autoFormularioPane.add(cajaKilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 230, 140, 30));
 
         cajaFabricante.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        cajaFabricante.setText("jTextField1");
         cajaFabricante.setMargin(new java.awt.Insets(2, 8, 2, 8));
         autoFormularioPane.add(cajaFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 140, 30));
 
         cajaModelo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        cajaModelo.setText("jTextField1");
         cajaModelo.setMargin(new java.awt.Insets(2, 8, 2, 8));
         autoFormularioPane.add(cajaModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 140, 30));
 
@@ -474,6 +480,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         comboPaisFabricacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         autoFormularioPane.add(comboPaisFabricacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 140, 30));
         autoFormularioPane.add(spinNumeroAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 140, 30));
+
+        spinNumeroPuertas.setModel(new javax.swing.SpinnerNumberModel(Byte.valueOf((byte)1), Byte.valueOf((byte)1), Byte.valueOf((byte)6), Byte.valueOf((byte)1)));
         autoFormularioPane.add(spinNumeroPuertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 140, 30));
 
         txtAsientos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -481,7 +489,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         autoFormularioPane.add(txtAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 140, 30));
 
         cajaPrecio.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        cajaPrecio.setText("jTextField1");
         cajaPrecio.setMargin(new java.awt.Insets(2, 8, 2, 8));
         autoFormularioPane.add(cajaPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 140, 30));
 

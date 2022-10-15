@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Automovil;
+import vista.ResultSetTableModel;
 
 public class ConexionBD {
 
@@ -141,13 +142,32 @@ public class ConexionBD {
         }
     }
 
+    public static ResultSetTableModel actualizarTablaAutomoviles() {
+        String consulta;
+        consulta = "SELECT * FROM automoviles";
 
-    public static void main(String[] args) {
-        ConexionBD.getConexion();
-        
-        Automovil a1 = new Automovil();
-        a1.setIdAutomovil(3);
-        ConexionBD.cambioAutomovil(new Automovil(5, 1,"a","a",1, "me", (byte)4, "a", (byte)4, 1));
+        ResultSetTableModel modeloDatos = null;
+
+        try {
+            modeloDatos = new ResultSetTableModel("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/autosamistosos",
+                    consulta);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return modeloDatos;
+
     }
 
- }
+    /*
+    public static void main(String[] args) {
+        ConexionBD.getConexion();
+
+        Automovil a1 = new Automovil();
+        a1.setIdAutomovil(3);
+        ConexionBD.cambioAutomovil(new Automovil(5, 1, "a", "a", 1, "me", (byte) 4, "a", (byte) 4, 1));
+    }*/
+
+}
