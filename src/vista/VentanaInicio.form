@@ -364,7 +364,7 @@
             <Component class="javax.swing.JLabel" name="btn_close">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Junegull" size="18" style="0"/>
+                  <Font name="bubbleboddy" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -388,7 +388,7 @@
             <Component class="javax.swing.JLabel" name="btn_minimize">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Junegull" size="18" style="0"/>
+                  <Font name="bubbleboddy" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
@@ -811,7 +811,7 @@
                 <Component class="javax.swing.JSpinner" name="spinNumeroAsientos">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="1" maximum="8" minimum="1" numberType="java.lang.Byte" stepSize="1" type="number"/>
+                      <SpinnerModel initial="0" maximum="8" minimum="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -823,7 +823,7 @@
                 <Component class="javax.swing.JSpinner" name="spinNumeroPuertas">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="1" maximum="6" minimum="1" numberType="java.lang.Byte" stepSize="1" type="number"/>
+                      <SpinnerModel initial="0" maximum="6" minimum="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
                     </Property>
                     <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
                       <SpinnerEditor format="" type="3"/>
@@ -925,6 +925,7 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarMouseClicked"/>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarMouseExited"/>
                   </Events>

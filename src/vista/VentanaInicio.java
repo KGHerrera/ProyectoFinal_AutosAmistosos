@@ -5,6 +5,7 @@
 package vista;
 
 import conexionBD.ConexionBD;
+import controlador.AutomovilDAO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -15,16 +16,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JSpinner;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.Automovil;
 
 /**
  *
  * @author Herrera
  */
 public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
-
-    public void actualizarTablaAutomoviles() {
-        tablaAutos.setModel(ConexionBD.actualizarTablaAutomoviles());
-    }
 
     /**
      * Creates new form VentanaInicio
@@ -80,8 +78,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         cajaModelo.addKeyListener(this);
         cajaPrecio.addKeyListener(this);
         cajaKilometraje.addKeyListener(this);
-        
-        
+
         ((JSpinner.DefaultEditor) spinNumeroAsientos.getEditor()).getTextField().setEditable(false);
         ((JSpinner.DefaultEditor) spinNumeroPuertas.getEditor()).getTextField().setEditable(false);
 
@@ -361,7 +358,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         });
         barra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_close.setFont(new java.awt.Font("Junegull", 0, 18)); // NOI18N
+        btn_close.setFont(new java.awt.Font("bubbleboddy", 0, 18)); // NOI18N
         btn_close.setForeground(new java.awt.Color(240, 240, 240));
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_close.setText("X");
@@ -374,7 +371,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         });
         barra.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 0, 30, 30));
 
-        btn_minimize.setFont(new java.awt.Font("Junegull", 0, 18)); // NOI18N
+        btn_minimize.setFont(new java.awt.Font("bubbleboddy", 0, 18)); // NOI18N
         btn_minimize.setForeground(new java.awt.Color(240, 240, 240));
         btn_minimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_minimize.setText("–");
@@ -519,10 +516,10 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         comboPaisFabricacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecciona opcion..." }));
         autoFormularioPane.add(comboPaisFabricacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 140, 30));
 
-        spinNumeroAsientos.setModel(new javax.swing.SpinnerNumberModel(Byte.valueOf((byte)1), Byte.valueOf((byte)1), Byte.valueOf((byte)8), Byte.valueOf((byte)1)));
+        spinNumeroAsientos.setModel(new javax.swing.SpinnerNumberModel(Byte.valueOf((byte)0), Byte.valueOf((byte)0), Byte.valueOf((byte)8), Byte.valueOf((byte)1)));
         autoFormularioPane.add(spinNumeroAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 140, 30));
 
-        spinNumeroPuertas.setModel(new javax.swing.SpinnerNumberModel(Byte.valueOf((byte)1), Byte.valueOf((byte)1), Byte.valueOf((byte)6), Byte.valueOf((byte)1)));
+        spinNumeroPuertas.setModel(new javax.swing.SpinnerNumberModel(Byte.valueOf((byte)0), Byte.valueOf((byte)0), Byte.valueOf((byte)6), Byte.valueOf((byte)1)));
         spinNumeroPuertas.setEditor(new javax.swing.JSpinner.NumberEditor(spinNumeroPuertas, ""));
         autoFormularioPane.add(spinNumeroPuertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 140, 30));
 
@@ -563,6 +560,9 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         btnAgregar.setBackground(new java.awt.Color(72, 58, 125));
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseEntered(evt);
             }
@@ -989,21 +989,31 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void btnModoRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoRegistrarMouseClicked
         txtModoAutos.setText("MODO REGISTRO");
+        modo = "alta";
+        txtAgregar.setText("AGREGAR");
+        btnAgregar.setBackground(new Color(72, 58, 125));
     }//GEN-LAST:event_btnModoRegistrarMouseClicked
 
 
     private void btnModoModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoModificarMouseClicked
         txtModoAutos.setText("MODO EDICION");
-
+        modo = "cambio";
+        txtAgregar.setText("MODIFICAR");
+        btnAgregar.setBackground(new Color(199, 139, 50));
     }//GEN-LAST:event_btnModoModificarMouseClicked
 
     private void btnModoEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarMouseClicked
         txtModoAutos.setText("MODO INSANO");
-
+        modo = "baja";
+        txtAgregar.setText("ELIMINAR");
+        btnAgregar.setBackground(new Color(199, 56, 87));
     }//GEN-LAST:event_btnModoEliminarMouseClicked
 
     private void btnModoConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarMouseClicked
         txtModoAutos.setText("MODO BUSQUEDA");
+        modo = "consulta";
+        txtAgregar.setText("BUSCAR");
+        btnAgregar.setBackground(new Color(47, 101, 181));
 
     }//GEN-LAST:event_btnModoConsultarMouseClicked
 
@@ -1105,10 +1115,70 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         btnAgregar.setBackground(new Color(54, 42, 99));
     }//GEN-LAST:event_btnAgregarMouseExited
 
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+
+        boolean isFabricante = !cajaFabricante.getText().equals("");
+        boolean isModelo = !cajaModelo.getText().trim().equals("");
+        boolean isPrecio = !cajaPrecio.getText().equals("");
+        boolean isKilometraje = !cajaKilometraje.getText().equals("");
+        boolean isNumeroPuertas = (byte) spinNumeroPuertas.getValue() != 0;
+        boolean isNumeroAcientos = (byte) spinNumeroAsientos.getValue() != 0;
+        boolean isMarca = comboMarca.getSelectedIndex() != 0;
+        boolean isPaisFabricacion = comboPaisFabricacion.getSelectedIndex() != 0;
+        boolean isColor = comboColor.getSelectedIndex() != 0;
+
+        // ---------------- ALTA AUTOMOVIL
+        if (modo == "alta") {
+            if (isFabricante && isModelo && isPrecio && isKilometraje
+                    && isNumeroPuertas && isNumeroAcientos && isMarca
+                    && isPaisFabricacion && isColor) {
+
+                automovil.setIdFabricante(Integer.parseInt(cajaFabricante.getText()));
+                automovil.setModelo(cajaModelo.getText());
+                automovil.setPrecio(Double.parseDouble(cajaPrecio.getText()));
+                automovil.setKilometraje(Integer.parseInt(cajaKilometraje.getText()));
+                automovil.setNumeroPuertas((byte) spinNumeroPuertas.getValue());
+                automovil.setNumeroAcientos((byte) spinNumeroAsientos.getValue());
+                automovil.setMarca(String.valueOf(comboMarca.getSelectedItem()));
+                automovil.setPaisFabricacion(String.valueOf(comboPaisFabricacion.getSelectedItem()));
+                automovil.setColor(String.valueOf(comboColor.getSelectedItem()));
+
+                automovilDAO.setOpcion(1);
+                automovilDAO.setAutomovil(automovil);
+
+                Thread h1 = new Thread(automovilDAO);
+                h1.start();
+
+                try {
+                    h1.join();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                
+                actualizarTablaAutomoviles();
+
+            }
+        } // ---------------- CAMBIO AUTOMOVIL
+        else if (modo == "cambio") {
+
+        } // ---------------- BAJA AUTOMOVIL
+        else if (modo == "baja") {
+
+        } // ---------------- CONSULTA AUTOMOVIL
+        else if (modo == "consulta") {
+
+        }
+
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
     // -----------------------------------------------------------------------
     // METODOS Y VARIABLES PROPIOS
     // -----------------------------------------------------------------------
     int xMouse, yMouse;
+    String modo = "alta";
+
+    AutomovilDAO automovilDAO = new AutomovilDAO();
+    Automovil automovil = new Automovil();
 
     private void ocultarSubMenuPanes() {
         ventasPane.setVisible(false);
@@ -1117,6 +1187,10 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         fabricantesPane.setVisible(false);
         reportesPane.setVisible(false);
         inicioPane.setVisible(false);
+    }
+
+    public void actualizarTablaAutomoviles() {
+        tablaAutos.setModel(ConexionBD.actualizarTablaAutomoviles());
     }
 
     /**
@@ -1248,7 +1322,9 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getSource() == cajaModelo) {
-            if (!(Character.isLetter(e.getKeyChar()) || e.getKeyChar() == ' ')) {
+            if (!(Character.isLetter(e.getKeyChar()) || e.getKeyChar()
+                    == ' ' || Character.isDigit(e.getKeyChar())
+                    || e.getKeyChar() == '-')) {
                 e.consume();
             }
         } else if (e.getSource() == cajaFabricante || e.getSource() == cajaKilometraje) {
@@ -1258,7 +1334,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         } else if (((e.getKeyChar() < '0') || (e.getKeyChar() > '9')) && (e.getKeyChar() != KeyEvent.VK_BACK_SPACE)
                 && (e.getKeyChar() != '.' || cajaPrecio.getText().contains("."))) {
             e.consume();
-        } 
+        }
     }
 
     @Override

@@ -10,7 +10,7 @@ import modelo.Automovil;
  *
  * @author Herrera
  */
-public class AutomovilDAO {
+public class AutomovilDAO implements Runnable{
     private int opcion;
     private Automovil automovil;
     private boolean res = false;
@@ -22,28 +22,43 @@ public class AutomovilDAO {
     public void setOpcion(int opcion) {
         this.opcion = opcion;
     }
-        
+
+    public Automovil getAutomovil() {
+        return automovil;
+    }
+
+    public void setAutomovil(Automovil automovil) {
+        this.automovil = automovil;
+    }
+              
     public boolean isRes(){
         return res;
     }
     
-    public boolean altaAutomovil(Automovil a){
-        res = ConexionBD.altaAutomovil(a);
+    public boolean altaAutomovil(){
+        res = ConexionBD.altaAutomovil(automovil);
         return res;
     }
     
-    public boolean bajaAutomovil(Automovil a){
-        res = ConexionBD.bajaAutomovil(a);
+    public boolean bajaAutomovil(){
+        res = ConexionBD.bajaAutomovil(automovil);
         return res;
     }
     
-    public boolean cambioAutomovil(Automovil a){
-        res = ConexionBD.cambioAutomovil(a);
+    public boolean cambioAutomovil(){
+        res = ConexionBD.cambioAutomovil(automovil);
         return res;
     }
     
-    public void consultaAutomovil(Automovil a){
-        ConexionBD.consultaAutomovil(a);
+    public void consultaAutomovil(){
+        ConexionBD.consultaAutomovil(automovil);
+    }
+
+    @Override
+    public void run() {
+        if (opcion == 1){
+            altaAutomovil();
+        }      
     }
     
     

@@ -9,6 +9,7 @@ package modelo;
  * @author Herrera
  */
 public class Automovil {
+
     private int idAutomovil;
     private int idFabricante;
     private String modelo;
@@ -114,5 +115,11 @@ public class Automovil {
 
     public void setKilometraje(int kilometraje) {
         this.kilometraje = kilometraje;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" + "idAutomovil=" + idAutomovil + ", idFabricante=" + idFabricante + ", modelo=" + modelo + ", marca=" + marca + ", precio=" + precio + ", paisFabricacion=" + paisFabricacion + ", numeroPuertas=" + numeroPuertas + ", color=" + color + ", numeroAcientos=" + numeroAcientos + ", kilometraje=" + kilometraje + '}';
+    }
+
 }
