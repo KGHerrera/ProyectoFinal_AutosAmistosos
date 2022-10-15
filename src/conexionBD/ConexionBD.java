@@ -66,8 +66,8 @@ public class ConexionBD {
             pstm = conexion.prepareStatement(consulta);
 
             pstm.setInt(1, a.getIdFabricante());
-            pstm.setString(2, a.getMarca());
-            pstm.setString(3, a.getModelo());
+            pstm.setString(2, a.getModelo());
+            pstm.setString(3, a.getMarca());
             pstm.setDouble(4, a.getPrecio());
             pstm.setString(5, a.getPaisFabricacion());
             pstm.setByte(6, a.getNumeroPuertas());
@@ -119,8 +119,8 @@ public class ConexionBD {
             pstm = conexion.prepareStatement(consulta);
 
             pstm.setInt(1, a.getIdFabricante());
-            pstm.setString(2, a.getMarca());
-            pstm.setString(3, a.getModelo());
+            pstm.setString(2, a.getModelo());
+            pstm.setString(3, a.getMarca());
             pstm.setDouble(4, a.getPrecio());
             pstm.setString(5, a.getPaisFabricacion());
             pstm.setByte(6, a.getNumeroPuertas());
@@ -141,6 +141,7 @@ public class ConexionBD {
         } else {
             return false;
         }
+
     }
 
     public static ResultSetTableModel actualizarTablaAutomoviles() {
@@ -209,6 +210,10 @@ public class ConexionBD {
 
         if (a.getNumeroPuertas() != (byte) 0) {
             consulta += "numeroPuertas='" + a.getNumeroPuertas() + "' and ";
+        }
+
+        if (a.getNumeroAcientos() != (byte) 0) {
+            consulta += "numeroAcientos='" + a.getNumeroAcientos() + "' and ";
         }
 
         if (a.getColor() != null) {

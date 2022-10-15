@@ -62,6 +62,9 @@ public class AutomovilDAO implements Runnable{
         else if (opcion == 2){
             cambioAutomovil();
         }
+        else if(opcion == 3){
+            bajaAutomovil();
+        }
     }
     
     
