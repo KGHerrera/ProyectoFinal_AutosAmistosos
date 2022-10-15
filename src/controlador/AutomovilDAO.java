@@ -58,7 +58,10 @@ public class AutomovilDAO implements Runnable{
     public void run() {
         if (opcion == 1){
             altaAutomovil();
-        }      
+        }   
+        else if (opcion == 2){
+            cambioAutomovil();
+        }
     }
     
     

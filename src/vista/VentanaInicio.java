@@ -79,6 +79,9 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         cajaPrecio.addKeyListener(this);
         cajaKilometraje.addKeyListener(this);
 
+        cajaIdAutomovil.setVisible(false);
+        txtIdAutomovil.setVisible(false);
+
         ((JSpinner.DefaultEditor) spinNumeroAsientos.getEditor()).getTextField().setEditable(false);
         ((JSpinner.DefaultEditor) spinNumeroPuertas.getEditor()).getTextField().setEditable(false);
 
@@ -144,6 +147,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         tablaAutos = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         txtAgregar = new javax.swing.JLabel();
+        cajaIdAutomovil = new javax.swing.JTextField();
+        txtIdAutomovil = new javax.swing.JLabel();
         inicioPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -589,6 +594,15 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
         autoFormularioPane.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 300, 140, 30));
 
+        cajaIdAutomovil.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        cajaIdAutomovil.setMargin(new java.awt.Insets(2, 8, 2, 8));
+        autoFormularioPane.add(cajaIdAutomovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 140, 30));
+
+        txtIdAutomovil.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtIdAutomovil.setForeground(new java.awt.Color(51, 0, 102));
+        txtIdAutomovil.setText("ID del AUTOMOVIL");
+        autoFormularioPane.add(txtIdAutomovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 30));
+
         autosPane.add(autoFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
 
         bg.add(autosPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
@@ -992,6 +1006,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         modo = "alta";
         txtAgregar.setText("AGREGAR");
         btnAgregar.setBackground(new Color(72, 58, 125));
+        cajaIdAutomovil.setVisible(false);
+        txtIdAutomovil.setVisible(false);
     }//GEN-LAST:event_btnModoRegistrarMouseClicked
 
 
@@ -1000,6 +1016,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         modo = "cambio";
         txtAgregar.setText("MODIFICAR");
         btnAgregar.setBackground(new Color(199, 139, 50));
+        cajaIdAutomovil.setVisible(true);
+        txtIdAutomovil.setVisible(true);
     }//GEN-LAST:event_btnModoModificarMouseClicked
 
     private void btnModoEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoEliminarMouseClicked
@@ -1007,6 +1025,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         modo = "baja";
         txtAgregar.setText("ELIMINAR");
         btnAgregar.setBackground(new Color(199, 56, 87));
+        cajaIdAutomovil.setVisible(true);
+        txtIdAutomovil.setVisible(true);
     }//GEN-LAST:event_btnModoEliminarMouseClicked
 
     private void btnModoConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModoConsultarMouseClicked
@@ -1014,7 +1034,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         modo = "consulta";
         txtAgregar.setText("BUSCAR");
         btnAgregar.setBackground(new Color(47, 101, 181));
-
+        cajaIdAutomovil.setVisible(true);
+        txtIdAutomovil.setVisible(true);
     }//GEN-LAST:event_btnModoConsultarMouseClicked
 
     // -----------------------------------------------------------------------
@@ -1117,6 +1138,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
 
+        boolean isIdAutomovil = !cajaIdAutomovil.getText().equals("");
         boolean isFabricante = !cajaFabricante.getText().equals("");
         boolean isModelo = !cajaModelo.getText().trim().equals("");
         boolean isPrecio = !cajaPrecio.getText().equals("");
@@ -1154,12 +1176,41 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                
-                actualizarTablaAutomoviles();
 
+                actualizarTablaAutomoviles();
             }
         } // ---------------- CAMBIO AUTOMOVIL
         else if (modo == "cambio") {
+            
+            if (isFabricante && isModelo && isPrecio && isKilometraje
+                    && isNumeroPuertas && isNumeroAcientos && isMarca
+                    && isPaisFabricacion && isColor && isIdAutomovil) {
+
+                automovil.setIdAutomovil(Integer.parseInt(cajaIdAutomovil.getText()));
+                automovil.setIdFabricante(Integer.parseInt(cajaFabricante.getText()));
+                automovil.setModelo(cajaModelo.getText());
+                automovil.setPrecio(Double.parseDouble(cajaPrecio.getText()));
+                automovil.setKilometraje(Integer.parseInt(cajaKilometraje.getText()));
+                automovil.setNumeroPuertas((byte) spinNumeroPuertas.getValue());
+                automovil.setNumeroAcientos((byte) spinNumeroAsientos.getValue());
+                automovil.setMarca(String.valueOf(comboMarca.getSelectedItem()));
+                automovil.setPaisFabricacion(String.valueOf(comboPaisFabricacion.getSelectedItem()));
+                automovil.setColor(String.valueOf(comboColor.getSelectedItem()));
+
+                automovilDAO.setOpcion(2);
+                automovilDAO.setAutomovil(automovil);
+
+                Thread h1 = new Thread(automovilDAO);
+                h1.start();
+
+                try {
+                    h1.join();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                actualizarTablaAutomoviles();
+            }
 
         } // ---------------- BAJA AUTOMOVIL
         else if (modo == "baja") {
@@ -1263,6 +1314,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
     private javax.swing.JTextField cajaFabricante;
+    private javax.swing.JTextField cajaIdAutomovil;
     private javax.swing.JTextField cajaKilometraje;
     private javax.swing.JTextField cajaModelo;
     private javax.swing.JTextField cajaPrecio;
@@ -1298,6 +1350,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtFabricantes;
     private javax.swing.JLabel txtFabricantesTitulo;
     private javax.swing.JLabel txtId;
+    private javax.swing.JLabel txtIdAutomovil;
     private javax.swing.JLabel txtIntroduceDatos;
     private javax.swing.JLabel txtKilometraje;
     private javax.swing.JLabel txtLogo;
