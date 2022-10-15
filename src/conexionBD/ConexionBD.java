@@ -21,12 +21,13 @@ public class ConexionBD {
     private static Connection conexion = null;
     private static PreparedStatement pstm;
     private static ResultSet rs;
+    private static String url = "jdbc:postgresql://localhost:5432/autosamistosos";
+    private static String costrolador = "org.postgresql.Driver";
 
     private ConexionBD() {
         try {
-            Class.forName("org.postgresql.Driver");
-            String URL = "jdbc:postgresql://localhost:5432/autosamistosos";
-            conexion = DriverManager.getConnection(URL, "enrique", "1234");
+            Class.forName(costrolador);
+            conexion = DriverManager.getConnection(url, "enrique", "1234");
             System.out.println("se conecto con exito XD");
 
         } catch (ClassNotFoundException e) {
@@ -149,7 +150,7 @@ public class ConexionBD {
         ResultSetTableModel modeloDatos = null;
 
         try {
-            modeloDatos = new ResultSetTableModel("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/autosamistosos",
+            modeloDatos = new ResultSetTableModel(costrolador, url,
                     consulta);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -161,6 +162,70 @@ public class ConexionBD {
 
     }
 
+    public static ResultSetTableModel consultaAutomovil(Automovil a) {
+
+        ResultSetTableModel modeloDatos = null;
+        String consulta = "SELECT * FROM automoviles WHERE ";
+        consulta += generarConsultaAutomovilModel(a);
+
+        try {
+            modeloDatos = new ResultSetTableModel(costrolador, url,
+                    consulta);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return modeloDatos;
+    }
+
+    public static String generarConsultaAutomovilModel(Automovil a) {
+
+        String consulta = "";
+        if (a.getIdAutomovil() != 0) {
+            consulta += "idAutomoviles='" + a.getIdAutomovil() + "' and ";
+        }
+
+        if (a.getIdFabricante() != 0) {
+            consulta += "idFabricantes='" + a.getIdFabricante() + "' and ";
+        }
+
+        if (a.getModelo() != null) {
+            consulta += "modelo='" + a.getModelo() + "' and ";
+        }
+
+        if (a.getMarca() != null) {
+            consulta += "marca='" + a.getMarca() + "' and ";
+        }
+
+        if (a.getPrecio() != 0.0) {
+            consulta += "precio='" + a.getPrecio() + "' and ";
+        }
+
+        if (a.getPaisFabricacion() != null) {
+            consulta += "paisFabricacion='" + a.getPaisFabricacion() + "' and ";
+        }
+
+        if (a.getNumeroPuertas() != (byte) 0) {
+            consulta += "numeroPuertas='" + a.getNumeroPuertas() + "' and ";
+        }
+
+        if (a.getColor() != null) {
+            consulta += "color='" + a.getColor() + "' and ";
+        }
+
+        if (a.getKilometraje() != 0) {
+            consulta += "kilometraje='" + a.getKilometraje() + "' and ";
+        }
+
+        if ((consulta.substring(consulta.length() - 4, consulta.length()).equals("and "))) {
+            consulta = consulta.substring(0, consulta.length() - 4);
+        }
+
+        return consulta;
+    }
+
     /*
     public static void main(String[] args) {
         ConexionBD.getConexion();
@@ -169,5 +234,4 @@ public class ConexionBD {
         a1.setIdAutomovil(3);
         ConexionBD.cambioAutomovil(new Automovil(5, 1, "a", "a", 1, "me", (byte) 4, "a", (byte) 4, 1));
     }*/
-
 }
