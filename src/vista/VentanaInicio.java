@@ -13,7 +13,11 @@ import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.Automovil;
@@ -78,6 +82,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         cajaModelo.addKeyListener(this);
         cajaPrecio.addKeyListener(this);
         cajaKilometraje.addKeyListener(this);
+        cajaIdAutomovil.addKeyListener(this);
 
         cajaIdAutomovil.setVisible(false);
         txtIdAutomovil.setVisible(false);
@@ -149,6 +154,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         txtAgregar = new javax.swing.JLabel();
         cajaIdAutomovil = new javax.swing.JTextField();
         txtIdAutomovil = new javax.swing.JLabel();
+        btnVaciar = new javax.swing.JPanel();
+        txtVaciar = new javax.swing.JLabel();
         inicioPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -602,6 +609,31 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         txtIdAutomovil.setForeground(new java.awt.Color(51, 0, 102));
         txtIdAutomovil.setText("ID del AUTOMOVIL");
         autoFormularioPane.add(txtIdAutomovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 30));
+
+        btnVaciar.setBackground(new java.awt.Color(0, 153, 153));
+        btnVaciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVaciarMouseClicked(evt);
+            }
+        });
+
+        txtVaciar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtVaciar.setForeground(new java.awt.Color(240, 240, 240));
+        txtVaciar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtVaciar.setText("AGREGAR");
+
+        javax.swing.GroupLayout btnVaciarLayout = new javax.swing.GroupLayout(btnVaciar);
+        btnVaciar.setLayout(btnVaciarLayout);
+        btnVaciarLayout.setHorizontalGroup(
+            btnVaciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtVaciar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        btnVaciarLayout.setVerticalGroup(
+            btnVaciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtVaciar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        autoFormularioPane.add(btnVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 140, 30));
 
         autosPane.add(autoFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
 
@@ -1181,7 +1213,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
             }
         } // ---------------- CAMBIO AUTOMOVIL
         else if (modo == "cambio") {
-            
+
             if (isFabricante && isModelo && isPrecio && isKilometraje
                     && isNumeroPuertas && isNumeroAcientos && isMarca
                     && isPaisFabricacion && isColor && isIdAutomovil) {
@@ -1222,6 +1254,15 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     }//GEN-LAST:event_btnAgregarMouseClicked
 
+    private void btnVaciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVaciarMouseClicked
+        restablecerComponentes(cajaIdAutomovil, 
+                cajaFabricante, cajaModelo, 
+                cajaKilometraje, cajaPrecio,
+                spinNumeroAsientos, spinNumeroPuertas,
+                comboColor, comboMarca, 
+                comboPaisFabricacion);
+    }//GEN-LAST:event_btnVaciarMouseClicked
+
     // -----------------------------------------------------------------------
     // METODOS Y VARIABLES PROPIOS
     // -----------------------------------------------------------------------
@@ -1230,6 +1271,21 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     AutomovilDAO automovilDAO = new AutomovilDAO();
     Automovil automovil = new Automovil();
+
+    public void restablecerComponentes(JComponent... componentes) {
+        for (JComponent c : componentes) {
+
+            if (c instanceof JTextField) {
+                ((JTextField) c).setText("");
+            } else if (c instanceof JCheckBox) {
+                ((JCheckBox) c).setSelected(false);
+            } else if (c instanceof JComboBox) {
+                ((JComboBox) c).setSelectedIndex(0);
+            } else if (c instanceof JSpinner) {
+                ((JSpinner) c).setValue(0);
+            }
+        }
+    }
 
     private void ocultarSubMenuPanes() {
         ventasPane.setVisible(false);
@@ -1310,6 +1366,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel btnModoRegistrarFabricantes;
     private javax.swing.JLabel btnModoRegistrarVentas;
     private javax.swing.JPanel btnReportes;
+    private javax.swing.JPanel btnVaciar;
     private javax.swing.JPanel btnVentas;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
@@ -1366,6 +1423,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtPuertas;
     private javax.swing.JLabel txtReportes;
     private javax.swing.JLabel txtReportesTitulo;
+    private javax.swing.JLabel txtVaciar;
     private javax.swing.JLabel txtVentas;
     private javax.swing.JLabel txtVentasTitulo;
     private javax.swing.JPanel ventasFormularioPane;
@@ -1380,7 +1438,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
                     || e.getKeyChar() == '-')) {
                 e.consume();
             }
-        } else if (e.getSource() == cajaFabricante || e.getSource() == cajaKilometraje) {
+        } else if (e.getSource() == cajaFabricante || e.getSource() == cajaKilometraje ||
+                e.getSource() == cajaIdAutomovil) {
             if (!Character.isDigit(e.getKeyChar())) {
                 e.consume();
             }
