@@ -96,7 +96,6 @@ public class ConexionBD {
             pstm = conexion.prepareStatement(consulta);
             pstm.setInt(1, a.getIdAutomovil());
             int res = pstm.executeUpdate();
-
             if (res != 0) {
                 return true;
             } else {
@@ -106,6 +105,7 @@ public class ConexionBD {
         } catch (SQLException error) {
             error.printStackTrace();
         }
+
         return false;
     }
 
@@ -146,7 +146,64 @@ public class ConexionBD {
 
     public static ResultSetTableModel actualizarTablaAutomoviles() {
         String consulta;
-        consulta = "SELECT * FROM automoviles";
+        consulta = "SELECT * FROM automoviles ORDER BY idAutomoviles";
+
+        ResultSetTableModel modeloDatos = null;
+
+        try {
+            modeloDatos = new ResultSetTableModel(costrolador, url,
+                    consulta);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return modeloDatos;
+
+    }
+
+    public static ResultSetTableModel actualizarTablaFabricantes() {
+        String consulta;
+        consulta = "SELECT * FROM fabricantes";
+
+        ResultSetTableModel modeloDatos = null;
+
+        try {
+            modeloDatos = new ResultSetTableModel(costrolador, url,
+                    consulta);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return modeloDatos;
+
+    }
+
+    public static ResultSetTableModel actualizarTablaClientes() {
+        String consulta;
+        consulta = "SELECT * FROM clientes";
+
+        ResultSetTableModel modeloDatos = null;
+
+        try {
+            modeloDatos = new ResultSetTableModel(costrolador, url,
+                    consulta);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return modeloDatos;
+
+    }
+
+    public static ResultSetTableModel actualizarTablaVentas() {
+        String consulta;
+        consulta = "SELECT * FROM ventas";
 
         ResultSetTableModel modeloDatos = null;
 
@@ -230,13 +287,4 @@ public class ConexionBD {
 
         return consulta;
     }
-
-    /*
-    public static void main(String[] args) {
-        ConexionBD.getConexion();
-
-        Automovil a1 = new Automovil();
-        a1.setIdAutomovil(3);
-        ConexionBD.cambioAutomovil(new Automovil(5, 1, "a", "a", 1, "me", (byte) 4, "a", (byte) 4, 1));
-    }*/
 }
