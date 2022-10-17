@@ -102,7 +102,11 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         tablaAutos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cargarDatosAutomovil(e, tablaAutos);             
+                
+                if(modo=="cambio" || modo=="consulta"){
+                    cargarDatosAutomovil(e, tablaAutos);  
+                }
+                           
             }
         });
     }
@@ -133,6 +137,14 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         txtReportes = new javax.swing.JLabel();
         btnHomePane = new javax.swing.JPanel();
         txtReportes1 = new javax.swing.JLabel();
+        inicioPane = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cuadroDec1 = new javax.swing.JPanel();
+        cuadroDec3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        txtSeleccionaAccion = new javax.swing.JLabel();
+        txtInicioTitulo = new javax.swing.JLabel();
         barra = new javax.swing.JPanel();
         btn_minimize = new javax.swing.JLabel();
         btn_close = new javax.swing.JLabel();
@@ -287,12 +299,6 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         cajaDireccionCliente = new javax.swing.JTextField();
         txtTelefonoCliente = new javax.swing.JLabel();
         cajaTelefonoCliente = new javax.swing.JTextField();
-        inicioPane = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        cuadroDec1 = new javax.swing.JPanel();
-        cuadroDec3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -478,6 +484,65 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         menu.add(btnHomePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 250, 50));
 
         bg.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
+
+        inicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel2.setText("AutAmi");
+        inicioPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 80));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel3.setText("WELCOME TO ");
+        inicioPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, 80));
+
+        cuadroDec1.setBackground(new java.awt.Color(40, 40, 40));
+
+        javax.swing.GroupLayout cuadroDec1Layout = new javax.swing.GroupLayout(cuadroDec1);
+        cuadroDec1.setLayout(cuadroDec1Layout);
+        cuadroDec1Layout.setHorizontalGroup(
+            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        cuadroDec1Layout.setVerticalGroup(
+            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        inicioPane.add(cuadroDec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 40, 40));
+
+        cuadroDec3.setBackground(new java.awt.Color(8, 117, 207));
+
+        javax.swing.GroupLayout cuadroDec3Layout = new javax.swing.GroupLayout(cuadroDec3);
+        cuadroDec3.setLayout(cuadroDec3Layout);
+        cuadroDec3Layout.setHorizontalGroup(
+            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        cuadroDec3Layout.setVerticalGroup(
+            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        inicioPane.add(cuadroDec3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 40, 40));
+
+        jPanel1.setBackground(new java.awt.Color(72, 58, 125));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtSeleccionaAccion.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtSeleccionaAccion.setForeground(new java.awt.Color(240, 240, 240));
+        txtSeleccionaAccion.setText("Selecciona algun submenu");
+        jPanel1.add(txtSeleccionaAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        txtInicioTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtInicioTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtInicioTitulo.setText("PANTALLA DE INICIO");
+        jPanel1.add(txtInicioTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        inicioPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        bg.add(inicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
         barra.setBackground(new java.awt.Color(72, 58, 125));
         barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -1636,65 +1701,6 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
         bg.add(clientesPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
-        inicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel2.setText("AutAmi");
-        inicioPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 80));
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel3.setText("WELCOME TO ");
-        inicioPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, 80));
-
-        cuadroDec1.setBackground(new java.awt.Color(200, 200, 200));
-
-        javax.swing.GroupLayout cuadroDec1Layout = new javax.swing.GroupLayout(cuadroDec1);
-        cuadroDec1.setLayout(cuadroDec1Layout);
-        cuadroDec1Layout.setHorizontalGroup(
-            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        cuadroDec1Layout.setVerticalGroup(
-            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        inicioPane.add(cuadroDec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 40, 40));
-
-        cuadroDec3.setBackground(new java.awt.Color(8, 117, 207));
-
-        javax.swing.GroupLayout cuadroDec3Layout = new javax.swing.GroupLayout(cuadroDec3);
-        cuadroDec3.setLayout(cuadroDec3Layout);
-        cuadroDec3Layout.setHorizontalGroup(
-            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        cuadroDec3Layout.setVerticalGroup(
-            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        inicioPane.add(cuadroDec3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 40, 40));
-
-        jPanel1.setBackground(new java.awt.Color(72, 58, 125));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1030, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
-        );
-
-        inicioPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
-
-        bg.add(inicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2496,6 +2502,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtIdFabricante;
     private javax.swing.JLabel txtIdVentaFK;
     private javax.swing.JLabel txtImpuesto;
+    private javax.swing.JLabel txtInicioTitulo;
     private javax.swing.JLabel txtIntroduceDatos;
     private javax.swing.JLabel txtIntroduceDatos1;
     private javax.swing.JLabel txtIntroduceDatos2;
@@ -2526,6 +2533,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtReportes1;
     private javax.swing.JLabel txtReportesTitulo;
     private javax.swing.JLabel txtSegundoApellido;
+    private javax.swing.JLabel txtSeleccionaAccion;
     private javax.swing.JLabel txtTelefonoCliente;
     private javax.swing.JLabel txtTelefonoFabricante;
     private javax.swing.JLabel txtVaciar;
