@@ -2304,15 +2304,15 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     public void cargarDatosAutomovil(java.awt.event.MouseEvent evt, JTable tablaAutos) {
 
         cajaIdAutomovil.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
-        cajaFabricante.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 1)));
-        cajaModelo.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 2)));
-        comboMarca.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 3)));
-        cajaPrecio.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 4)));
-        comboPaisFabricacion.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 5)));
-        spinNumeroPuertas.setValue(Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 6))));
-        comboColor.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 7)));
-        spinNumeroAsientos.setValue(Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 8))));
-        cajaKilometraje.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 9)));
+        cajaFabricante.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 9)));
+        cajaModelo.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 1)));
+        comboMarca.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 2)));
+        cajaPrecio.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 3)));
+        comboPaisFabricacion.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 4)));
+        spinNumeroPuertas.setValue(Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 5))));
+        comboColor.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 6)));
+        spinNumeroAsientos.setValue(Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 7))));
+        cajaKilometraje.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 8)));
         
     }
 

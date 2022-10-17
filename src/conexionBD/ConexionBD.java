@@ -146,7 +146,7 @@ public class ConexionBD {
 
     public static ResultSetTableModel actualizarTablaAutomoviles() {
         String consulta;
-        consulta = "SELECT * FROM automoviles ORDER BY idAutomoviles";
+        consulta = "SELECT * FROM AUTOS_FABRICANTES ORDER BY idAutomoviles";
 
         ResultSetTableModel modeloDatos = null;
 
