@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
 import modelo.Automovil;
 import modelo.Fabricante;
 import vista.ResultSetTableModel;
@@ -90,7 +91,7 @@ public class ConexionBD {
         }
 
     }
-    
+
     public static boolean altaFabricante(Fabricante f) {
         int res = 0;
         try {
@@ -100,7 +101,7 @@ public class ConexionBD {
 
             pstm.setString(1, f.getNombre());
             pstm.setString(2, f.getDireccion());
-            pstm.setString(3, f.getTelefono());           
+            pstm.setString(3, f.getTelefono());
 
             res = pstm.executeUpdate();
 
@@ -170,9 +171,9 @@ public class ConexionBD {
 
     }
 
-    public static ResultSetTableModel actualizarTablaAutomoviles() {
+    public static void actualizarTabla(JTable tabla,String nombreTabla, String order) {
         String consulta;
-        consulta = "SELECT * FROM AUTOS_FABRICANTES ORDER BY idAutomoviles";
+        consulta = "SELECT * FROM " + nombreTabla + " ORDER BY " + order + "";
 
         ResultSetTableModel modeloDatos = null;
 
@@ -185,14 +186,13 @@ public class ConexionBD {
             e.printStackTrace();
         }
 
-        return modeloDatos;
+        tabla.setModel(modeloDatos);
 
     }
 
-    public static ResultSetTableModel actualizarTablaFabricantes() {
+    public static void actualizarTablaAutomovilesFiltro(JTable tabla, String campo, String filtro) {
         String consulta;
-        consulta = "SELECT * FROM fabricantes";
-
+        consulta = "SELECT * FROM AUTOS_FABRICANTES WHERE " + campo + " LIKE '" + filtro + "%' ORDER BY idAutomoviles";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -203,53 +203,13 @@ public class ConexionBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return modeloDatos;
-
-    }
-
-    public static ResultSetTableModel actualizarTablaClientes() {
-        String consulta;
-        consulta = "SELECT * FROM clientes";
-
-        ResultSetTableModel modeloDatos = null;
-
-        try {
-            modeloDatos = new ResultSetTableModel(costrolador, url,
-                    consulta);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return modeloDatos;
-
-    }
-
-    public static ResultSetTableModel actualizarTablaVentas() {
-        String consulta;
-        consulta = "SELECT * FROM ventas";
-
-        ResultSetTableModel modeloDatos = null;
-
-        try {
-            modeloDatos = new ResultSetTableModel(costrolador, url,
-                    consulta);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return modeloDatos;
-
+        tabla.setModel(modeloDatos);
     }
 
     public static ResultSetTableModel consultaAutomovil(Automovil a) {
 
         ResultSetTableModel modeloDatos = null;
-        String consulta = "SELECT * FROM automoviles WHERE ";
+        String consulta = "SELECT * FROM AUTOS_FABRICANTES WHERE ";
         consulta += generarConsultaAutomovilModel(a);
 
         try {

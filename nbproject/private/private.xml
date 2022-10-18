@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Herrera/Documents/NetBeansProjects/ProyectoFinal/src/vista/VentanaInicio.java</file>
             <file>file:/C:/Users/Herrera/Documents/NetBeansProjects/ProyectoFinal/src/modelo/Automovil.java</file>
+            <file>file:/C:/Users/Herrera/Documents/NetBeansProjects/ProyectoFinal/src/controlador/FabricanteDAO.java</file>
             <file>file:/C:/Users/Herrera/Documents/NetBeansProjects/ProyectoFinal/src/conexionBD/ConexionBD.java</file>
-            <file>file:/C:/Users/Herrera/Documents/NetBeansProjects/ProyectoFinal/src/controlador/AutomovilDAO.java</file>
         </group>
     </open-files>
 </project-private>
