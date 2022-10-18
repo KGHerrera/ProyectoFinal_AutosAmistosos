@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Automovil;
+import modelo.Fabricante;
 import vista.ResultSetTableModel;
 
 public class ConexionBD {
@@ -88,6 +89,31 @@ public class ConexionBD {
             return false;
         }
 
+    }
+    
+    public static boolean altaFabricante(Fabricante f) {
+        int res = 0;
+        try {
+
+            String consulta = "INSERT INTO fabricantes(nombre, direccion, telefono) VALUES (?,?,?)";
+            pstm = conexion.prepareStatement(consulta);
+
+            pstm.setString(1, f.getNombre());
+            pstm.setString(2, f.getDireccion());
+            pstm.setString(3, f.getTelefono());           
+
+            res = pstm.executeUpdate();
+
+        } catch (SQLException error) {
+            res = 0;
+            error.printStackTrace();
+        }
+
+        if (res != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean bajaAutomovil(Automovil a) {
