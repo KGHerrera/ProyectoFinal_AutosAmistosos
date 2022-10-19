@@ -2452,7 +2452,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void tablaAutosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAutosMouseReleased
 
-        if (modo == "cambio" || modo == "consulta") {
+        if (modo == "cambio" || modo == "consulta"  || modo=="alta") {
             cajaIdAutomovil.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
             cajaFabricante.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 9)));
             cajaModelo.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 1)));
