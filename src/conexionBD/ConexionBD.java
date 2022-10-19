@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import javax.swing.JTable;
 import modelo.Automovil;
 import modelo.Fabricante;
+import modelo.Usuario;
 import vista.ResultSetTableModel;
 
 public class ConexionBD {
@@ -60,12 +61,28 @@ public class ConexionBD {
         }
     }
 
-    public static boolean altaAutomovil(Automovil a) throws SQLException {
+    public static ResultSet consultarUsuario(Usuario u) {
+        try {
+            String consulta = "SELECT VERIFICAR_USUARIO(?, ?)";
+            pstm = conexion.prepareStatement(consulta);
+            pstm.setString(1, u.getUsuario());
+            pstm.setString(2, u.getPassword());
+
+            rs = pstm.executeQuery();
+
+        } catch (Exception ex) {
+            //System.out.println(ex.toString());
+        }
+
+        return rs;
+    }
+
+    public static boolean altaAutomovil(Automovil a) {
         int res = 0;
         try {
             // TRANSACCION ALTAS
             conexion.setAutoCommit(false);
-                
+
             String consulta = "INSERT INTO automoviles(idFabricantes, modelo, marca, precio, paisFabricacion, numeroPuertas, color, numeroAcientos, kilometraje) VALUES (?,?,?,?,?,?,?,?,?)";
             pstm = conexion.prepareStatement(consulta);
 
@@ -80,15 +97,18 @@ public class ConexionBD {
             pstm.setInt(9, a.getKilometraje());
 
             res = pstm.executeUpdate();
-            
+
             // SE EJECUTA SI NO EXISTE ERROR
             conexion.commit();
-            
         } catch (SQLException error) {
             res = 0;
-            
+
             // REGRESA AL ESTADO ANTERIOR
-            conexion.rollback();
+            try{
+                conexion.rollback();
+            } catch(SQLException er){
+                
+            }
             error.printStackTrace();
         }
 
@@ -100,10 +120,10 @@ public class ConexionBD {
 
     }
 
-    public static boolean altaFabricante(Fabricante f) throws SQLException {
+    public static boolean altaFabricante(Fabricante f) {
         int res = 0;
         try {
-            
+
             // TRANSACCION ALTAS
             conexion.setAutoCommit(false);
             String consulta = "INSERT INTO fabricantes(nombre, direccion, telefono) VALUES (?,?,?)";
@@ -114,15 +134,19 @@ public class ConexionBD {
             pstm.setString(3, f.getTelefono());
 
             res = pstm.executeUpdate();
-            
+
             // SE EJECUTA SI NO EXISTE ERROR
             conexion.commit();
 
         } catch (SQLException error) {
             res = 0;
-            
+
             // REGRESA AL ESTADO ANTERIOR
-            conexion.rollback();
+            try{
+                conexion.rollback();
+            } catch(SQLException er){
+                
+            }
             error.printStackTrace();
         }
 
@@ -133,19 +157,19 @@ public class ConexionBD {
         }
     }
 
-    public static boolean bajaAutomovil(Automovil a) throws SQLException {
+    public static boolean bajaAutomovil(Automovil a) {
         try {
             // TRANSACCION
             conexion.setAutoCommit(false);
-            
+
             String consulta = "DELETE FROM automoviles WHERE idAutomoviles=?";
             pstm = conexion.prepareStatement(consulta);
             pstm.setInt(1, a.getIdAutomovil());
             int res = pstm.executeUpdate();
-            
+
             // SE EJECUTA SI NO EXISTE ERROR
             conexion.commit();
-            
+
             if (res != 0) {
                 return true;
             } else {
@@ -153,22 +177,26 @@ public class ConexionBD {
             }
 
         } catch (SQLException error) {
-            
+
             // REGRESA AL ESTADO ANTERIOR
-            conexion.rollback();
+            try{
+                conexion.rollback();
+            } catch(SQLException er){
+                
+            }
             error.printStackTrace();
         }
 
         return false;
     }
 
-    public static boolean cambioAutomovil(Automovil a) throws SQLException {
+    public static boolean cambioAutomovil(Automovil a) {
         int res = 0;
         try {
-            
+
             // TRANSACCION
             conexion.setAutoCommit(false);
-            
+
             String consulta = "UPDATE automoviles SET "
                     + "idFabricantes=?, modelo=?, marca=?, precio=?, "
                     + "paisFabricacion=?, numeroPuertas=?, color=?, "
@@ -187,14 +215,19 @@ public class ConexionBD {
             pstm.setInt(10, a.getIdAutomovil());
 
             res = pstm.executeUpdate();
-            
+
             // SE CONFIRMAN LOS CAMBIOS
             conexion.commit();
 
         } catch (Exception ex) {
-            
+
             // REGRESA AL ESTADO ANTERIOR
-            conexion.rollback();
+            try{
+                conexion.rollback();
+            } catch(SQLException er){
+                
+            }
+            
             res = 0;
             //System.out.println(ex.toString());
         }
@@ -207,7 +240,7 @@ public class ConexionBD {
 
     }
 
-    public static void actualizarTabla(JTable tabla,String nombreTabla, String order) {
+    public static void actualizarTabla(JTable tabla, String nombreTabla, String order) {
         String consulta;
         consulta = "SELECT * FROM " + nombreTabla + " ORDER BY " + order + "";
 
@@ -308,5 +341,5 @@ public class ConexionBD {
         }
 
         return consulta;
-    }
+    }   
 }
