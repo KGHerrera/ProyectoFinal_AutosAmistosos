@@ -300,7 +300,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         jPanel1 = new javax.swing.JPanel();
         txtSeleccionaAccion = new javax.swing.JLabel();
         txtInicioTitulo = new javax.swing.JLabel();
-        messagePaneFabricante1 = new javax.swing.JPanel();
+        messagePaneInicio = new javax.swing.JPanel();
         txtMessageInicio = new javax.swing.JLabel();
         fluttershy = new javax.swing.JLabel();
         logoPane = new javax.swing.JPanel();
@@ -1706,18 +1706,18 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
         inicioPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
 
-        messagePaneFabricante1.setBackground(new java.awt.Color(0, 153, 153));
-        messagePaneFabricante1.setForeground(new java.awt.Color(33, 235, 103));
-        messagePaneFabricante1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        messagePaneFabricante1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        messagePaneInicio.setBackground(new java.awt.Color(0, 153, 153));
+        messagePaneInicio.setForeground(new java.awt.Color(33, 235, 103));
+        messagePaneInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        messagePaneInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtMessageInicio.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         txtMessageInicio.setForeground(new java.awt.Color(240, 240, 240));
         txtMessageInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMessageInicio.setText("SOLO SOY UNA BARRA QUE EVITA QUE ESTO SE VEA VACIO :XD:");
-        messagePaneFabricante1.add(txtMessageInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 930, 50));
+        txtMessageInicio.setText("POWERED BY APACHE FRIJOLES NETOS");
+        messagePaneInicio.add(txtMessageInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 930, 50));
 
-        inicioPane.add(messagePaneFabricante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1030, 50));
+        inicioPane.add(messagePaneInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1030, 50));
 
         fluttershy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/full.gif"))); // NOI18N
         inicioPane.add(fluttershy, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
@@ -2705,7 +2705,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JPanel messagePane;
     private javax.swing.JPanel messagePane1;
     private javax.swing.JPanel messagePaneFabricante;
-    private javax.swing.JPanel messagePaneFabricante1;
+    private javax.swing.JPanel messagePaneInicio;
     private javax.swing.JPanel messagePaneReporte;
     private javax.swing.JPanel reportesFormularioPane;
     private javax.swing.JPanel reportesPane;

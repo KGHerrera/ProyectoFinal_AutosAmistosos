@@ -4,10 +4,15 @@
  */
 package vista;
 
+import conexionBD.ConexionBD;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.Usuario;
 
 /**
  *
@@ -32,7 +37,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         }
 
         initComponents();
-
+        messagePane.setVisible(false);
         setLocationRelativeTo(null);
     }
 
@@ -50,11 +55,15 @@ public class VentanaLogin extends javax.swing.JFrame {
         txtIniciarSesion = new javax.swing.JLabel();
         btnLogin = new javax.swing.JPanel();
         txtLogin = new javax.swing.JLabel();
-        cajaUsername = new javax.swing.JTextField();
+        cajaUsuario = new javax.swing.JTextField();
         txtUser = new javax.swing.JLabel();
         cajaPassword = new javax.swing.JPasswordField();
         txtPassword = new javax.swing.JLabel();
         userIcon = new javax.swing.JLabel();
+        messagePane = new javax.swing.JPanel();
+        txtMessageLogin = new javax.swing.JLabel();
+        btnCloseMesaggePane = new javax.swing.JLabel();
+        btnCloseMesaggePane1 = new javax.swing.JLabel();
         barra = new javax.swing.JPanel();
         btn_minimize = new javax.swing.JLabel();
         btn_close = new javax.swing.JLabel();
@@ -69,48 +78,86 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         loginPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtIniciarSesion.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
+        txtIniciarSesion.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         txtIniciarSesion.setForeground(new java.awt.Color(70, 70, 70));
         txtIniciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIniciarSesion.setText("INICIAR SESION");
-        loginPane.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, 30));
+        loginPane.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 440, 30));
 
-        btnLogin.setBackground(new java.awt.Color(0, 153, 153));
+        btnLogin.setBackground(new java.awt.Color(153, 0, 153));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
+            }
+        });
         btnLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtLogin.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        txtLogin.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         txtLogin.setForeground(new java.awt.Color(240, 240, 240));
         txtLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLogin.setText("LOGIN");
-        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 250, 50));
+        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 40));
 
-        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 290, 50));
+        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 180, 40));
 
-        cajaUsername.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        cajaUsername.setForeground(new java.awt.Color(50, 50, 50));
-        cajaUsername.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        loginPane.add(cajaUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 350, 50));
+        cajaUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        cajaUsuario.setForeground(new java.awt.Color(50, 50, 50));
+        cajaUsuario.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        loginPane.add(cajaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 280, 30));
 
         txtUser.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         txtUser.setForeground(new java.awt.Color(50, 50, 50));
         txtUser.setText("username");
-        loginPane.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, 30));
+        loginPane.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 70, 30));
 
-        cajaPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cajaPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cajaPassword.setForeground(new java.awt.Color(50, 50, 50));
         cajaPassword.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        loginPane.add(cajaPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 350, 50));
+        loginPane.add(cajaPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 280, 30));
 
         txtPassword.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(50, 50, 50));
         txtPassword.setText("password");
-        loginPane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, 30));
+        loginPane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 30));
 
+        userIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
-        loginPane.add(userIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
+        loginPane.add(userIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 440, -1));
 
-        bg.add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 500, 600));
+        messagePane.setForeground(new java.awt.Color(33, 235, 103));
+        messagePane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        messagePane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                messagePaneMouseClicked(evt);
+            }
+        });
+        messagePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtMessageLogin.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        txtMessageLogin.setForeground(new java.awt.Color(240, 240, 240));
+        txtMessageLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        messagePane.add(txtMessageLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 340, 50));
+
+        btnCloseMesaggePane.setFont(new java.awt.Font("bubbleboddy", 0, 18)); // NOI18N
+        btnCloseMesaggePane.setForeground(new java.awt.Color(240, 240, 240));
+        btnCloseMesaggePane.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCloseMesaggePane.setText("X");
+        btnCloseMesaggePane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCloseMesaggePane.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        messagePane.add(btnCloseMesaggePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 30, 30));
+
+        btnCloseMesaggePane1.setFont(new java.awt.Font("bubbleboddy", 0, 18)); // NOI18N
+        btnCloseMesaggePane1.setForeground(new java.awt.Color(240, 240, 240));
+        btnCloseMesaggePane1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCloseMesaggePane1.setText("X");
+        btnCloseMesaggePane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCloseMesaggePane1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        messagePane.add(btnCloseMesaggePane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 30, 30));
+
+        loginPane.add(messagePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 440, 50));
+
+        bg.add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 440, 550));
 
         barra.setBackground(new java.awt.Color(72, 58, 125));
         barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -184,6 +231,64 @@ public class VentanaLogin extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_barraMousePressed
 
+    Usuario usuario = new Usuario();
+
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        char[] arrayC = cajaPassword.getPassword();
+        String pass = new String(arrayC);
+
+        if (!cajaUsuario.getText().equals("") && !pass.equals("")) {
+            usuario.setUsuario(cajaUsuario.getText());
+            usuario.setPassword(pass);
+
+            ConexionBD.getConexion();
+
+            ResultSet rs = ConexionBD.consultarUsuario(usuario);
+
+            try {
+                if (rs.next()) {
+
+                    if (rs.getInt(1) == 1) {
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                new VentanaInicio().setVisible(true);
+                            }
+                        });
+                        dispose();
+                    } else {
+                        messagePane.setBackground(new Color(199, 56, 87));
+                        txtMessageLogin.setText("DATOS ERRONEOS intenta de nuevo");
+                        messagePane.setVisible(true);
+                    }
+
+                }
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+
+        } else {
+            String noDatos = "Introduce [";
+
+            if (cajaUsuario.getText().equals("")) {
+                noDatos += " USUARIO";
+            }
+
+            if (pass.equals("")) {
+                noDatos += " PASSWORD";
+            }
+
+            noDatos += " ]";
+
+            messagePane.setBackground(new Color(199, 56, 87));
+            txtMessageLogin.setText(noDatos);
+            messagePane.setVisible(true);
+        }
+    }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void messagePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagePaneMouseClicked
+        messagePane.setVisible(false);
+    }//GEN-LAST:event_messagePaneMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -222,14 +327,18 @@ public class VentanaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barra;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel btnCloseMesaggePane;
+    private javax.swing.JLabel btnCloseMesaggePane1;
     private javax.swing.JPanel btnLogin;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
     private javax.swing.JPasswordField cajaPassword;
-    private javax.swing.JTextField cajaUsername;
+    private javax.swing.JTextField cajaUsuario;
     private javax.swing.JPanel loginPane;
+    private javax.swing.JPanel messagePane;
     private javax.swing.JLabel txtIniciarSesion;
     private javax.swing.JLabel txtLogin;
+    private javax.swing.JLabel txtMessageLogin;
     private javax.swing.JLabel txtOlvidoXD;
     private javax.swing.JLabel txtPassword;
     private javax.swing.JLabel txtUser;
