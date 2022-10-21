@@ -64,27 +64,34 @@ public class VentanaLogin extends javax.swing.JFrame {
         txtMessageLogin = new javax.swing.JLabel();
         btnCloseMesaggePane = new javax.swing.JLabel();
         btnCloseMesaggePane1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        menu = new javax.swing.JPanel();
+        txtLogo = new javax.swing.JLabel();
+        cuadroDec = new javax.swing.JPanel();
+        cuadroDec2 = new javax.swing.JPanel();
+        btnHomePane = new javax.swing.JPanel();
         barra = new javax.swing.JPanel();
         btn_minimize = new javax.swing.JLabel();
         btn_close = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         txtOlvidoXD = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bg.setBackground(new java.awt.Color(72, 58, 125));
+        bg.setBackground(new java.awt.Color(55, 42, 104));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         loginPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtIniciarSesion.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        txtIniciarSesion.setForeground(new java.awt.Color(70, 70, 70));
+        txtIniciarSesion.setForeground(new java.awt.Color(100, 100, 100));
         txtIniciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIniciarSesion.setText("INICIAR SESION");
-        loginPane.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 440, 30));
+        loginPane.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 440, 30));
 
-        btnLogin.setBackground(new java.awt.Color(153, 0, 153));
+        btnLogin.setBackground(new java.awt.Color(52, 156, 244));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,33 +104,33 @@ public class VentanaLogin extends javax.swing.JFrame {
         txtLogin.setForeground(new java.awt.Color(240, 240, 240));
         txtLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLogin.setText("LOGIN");
-        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 40));
+        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 110, 40));
 
-        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 180, 40));
+        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 150, 40));
 
         cajaUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         cajaUsuario.setForeground(new java.awt.Color(50, 50, 50));
         cajaUsuario.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        loginPane.add(cajaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 280, 30));
+        loginPane.add(cajaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
 
         txtUser.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         txtUser.setForeground(new java.awt.Color(50, 50, 50));
         txtUser.setText("username");
-        loginPane.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 70, 30));
+        loginPane.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 70, 30));
 
         cajaPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cajaPassword.setForeground(new java.awt.Color(50, 50, 50));
         cajaPassword.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        loginPane.add(cajaPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 280, 30));
+        loginPane.add(cajaPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 280, 30));
 
         txtPassword.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(50, 50, 50));
         txtPassword.setText("password");
-        loginPane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 60, 30));
+        loginPane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 60, 30));
 
         userIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
-        loginPane.add(userIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 440, -1));
+        userIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        loginPane.add(userIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 440, -1));
 
         messagePane.setForeground(new java.awt.Color(33, 235, 103));
         messagePane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -157,9 +164,58 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         loginPane.add(messagePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 440, 50));
 
+        jPanel1.setBackground(new java.awt.Color(52, 156, 244));
+        loginPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 10));
+
         bg.add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 440, 550));
 
-        barra.setBackground(new java.awt.Color(72, 58, 125));
+        menu.setBackground(new java.awt.Color(40, 23, 72));
+        menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtLogo.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        txtLogo.setForeground(new java.awt.Color(240, 240, 240));
+        txtLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtLogo.setText("AutAmi");
+        menu.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 140, 50));
+
+        cuadroDec.setBackground(new java.awt.Color(230, 230, 230));
+
+        javax.swing.GroupLayout cuadroDecLayout = new javax.swing.GroupLayout(cuadroDec);
+        cuadroDec.setLayout(cuadroDecLayout);
+        cuadroDecLayout.setHorizontalGroup(
+            cuadroDecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        cuadroDecLayout.setVerticalGroup(
+            cuadroDecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        menu.add(cuadroDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 30, 30));
+
+        cuadroDec2.setBackground(new java.awt.Color(8, 117, 207));
+
+        javax.swing.GroupLayout cuadroDec2Layout = new javax.swing.GroupLayout(cuadroDec2);
+        cuadroDec2.setLayout(cuadroDec2Layout);
+        cuadroDec2Layout.setHorizontalGroup(
+            cuadroDec2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        cuadroDec2Layout.setVerticalGroup(
+            cuadroDec2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        menu.add(cuadroDec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 30, 30));
+
+        btnHomePane.setBackground(new java.awt.Color(22, 16, 44));
+        btnHomePane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHomePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menu.add(btnHomePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 250, 50));
+
+        bg.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
+
+        barra.setBackground(new java.awt.Color(55, 42, 104));
         barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 barraMouseDragged(evt);
@@ -200,10 +256,15 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         bg.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
+        jPanel2.setBackground(new java.awt.Color(42, 31, 84));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         txtOlvidoXD.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         txtOlvidoXD.setForeground(new java.awt.Color(240, 240, 240));
         txtOlvidoXD.setText("olvidaste la contraseña? preguntale a tu jefe XD");
-        bg.add(txtOlvidoXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 680, -1, 30));
+        jPanel2.add(txtOlvidoXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 300, 50));
+
+        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 670, 1030, 50));
 
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -250,7 +311,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
                     if (rs.getInt(1) == 1) {
                         java.awt.EventQueue.invokeLater(new Runnable() {
-                            public void run() {
+                          public void run() {
                                 new VentanaInicio().setVisible(true);
                             }
                         });
@@ -329,15 +390,22 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JLabel btnCloseMesaggePane;
     private javax.swing.JLabel btnCloseMesaggePane1;
+    private javax.swing.JPanel btnHomePane;
     private javax.swing.JPanel btnLogin;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
     private javax.swing.JPasswordField cajaPassword;
     private javax.swing.JTextField cajaUsuario;
+    private javax.swing.JPanel cuadroDec;
+    private javax.swing.JPanel cuadroDec2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel loginPane;
+    private javax.swing.JPanel menu;
     private javax.swing.JPanel messagePane;
     private javax.swing.JLabel txtIniciarSesion;
     private javax.swing.JLabel txtLogin;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtMessageLogin;
     private javax.swing.JLabel txtOlvidoXD;
     private javax.swing.JLabel txtPassword;
