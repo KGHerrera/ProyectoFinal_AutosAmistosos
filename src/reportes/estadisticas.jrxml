@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a202c13a-4f8b-4ac5-bc40-c287b3780a26">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT count(idAutomoviles), f.nombre FROM automoviles a 
+INNER JOIN fabricantes f
+ON f.idFabricantes = a.idFabricantes
+GROUP BY f.idFabricantes;]]>
+	</queryString>
+	<field name="count" class="java.lang.Long"/>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<rectangle radius="20">
+				<reportElement x="0" y="11" width="802" height="73" backcolor="#281748" uuid="36231b9a-5b31-4892-8c4e-ffb44bd14236"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="187" y="11" width="457" height="73" forecolor="#F0F0F0" uuid="a6ba0a18-bf72-4295-8677-962be03ffffa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="24"/>
+				</textElement>
+				<text><![CDATA[Automoviles en venta por Fabricantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="11" width="76" height="73" forecolor="#F0F0F0" uuid="aa1f5650-97a3-4b8e-b1fd-10d081b4ec0f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="20"/>
+				</textElement>
+				<text><![CDATA[AutAmi]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="32" y="33" width="20" height="19" backcolor="#0875CF" uuid="0692b0de-c752-41ed-ba34-873f52237fa8"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="42" y="43" width="20" height="19" uuid="39b3bd0f-520e-4f54-9ef8-b70fa79b077c"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="443" splitType="Stretch">
+			<rectangle radius="20">
+				<reportElement x="-1" y="10" width="803" height="395" uuid="62b030dc-5fa4-45a6-af97-dbd2eb3420ba"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="108" y="423" width="100" height="20" uuid="f7c67f23-24ba-4bf4-a827-207b812fe82b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="666" y="419" width="80" height="20" uuid="1eb59f98-6d3e-44e8-91d6-f72b3ef19450"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="746" y="419" width="40" height="20" uuid="5cbf47c6-7e66-4681-9ec5-e7d2b940499b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="423" width="109" height="20" uuid="b1ac87fb-bfad-4070-adf7-779a2a1a0aef"/>
+				<text><![CDATA[Fecha de generación]]></text>
+			</staticText>
+			<pieChart>
+				<chart>
+					<reportElement x="49" y="48" width="397" height="293" uuid="693202c2-a676-47a4-9045-c321d4db29fa"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{nombre}]]></keyExpression>
+					<valueExpression><![CDATA[$F{count}]]></valueExpression>
+					<labelExpression><![CDATA[$F{count} + " - " +$F{nombre}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<barChart>
+				<chart>
+					<reportElement mode="Transparent" x="477" y="21" width="309" height="368" forecolor="#000000" backcolor="#FFFFFF" uuid="c0cec402-1706-4d3a-a4b6-eb434b03582d"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{count}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{nombre}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{count}]]></valueExpression>
+						<labelExpression><![CDATA[$F{nombre}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</pageFooter>
+</jasperReport>

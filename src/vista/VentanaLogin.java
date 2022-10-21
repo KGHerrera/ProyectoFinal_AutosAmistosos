@@ -10,6 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JPasswordField;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.Usuario;
@@ -24,6 +30,9 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Creates new form VentanaLogin
      */
     public VentanaLogin() {
+        
+        ConexionBD.getConexion();
+        
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (ClassNotFoundException ex) {
@@ -63,8 +72,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         messagePane = new javax.swing.JPanel();
         txtMessageLogin = new javax.swing.JLabel();
         btnCloseMesaggePane = new javax.swing.JLabel();
-        btnCloseMesaggePane1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        btnReset = new javax.swing.JPanel();
+        txtLogin1 = new javax.swing.JLabel();
         menu = new javax.swing.JPanel();
         txtLogo = new javax.swing.JLabel();
         cuadroDec = new javax.swing.JPanel();
@@ -104,9 +114,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         txtLogin.setForeground(new java.awt.Color(240, 240, 240));
         txtLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtLogin.setText("LOGIN");
-        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 110, 40));
+        btnLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 80, 30));
 
-        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 150, 40));
+        loginPane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 120, 30));
 
         cajaUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         cajaUsuario.setForeground(new java.awt.Color(50, 50, 50));
@@ -154,18 +164,27 @@ public class VentanaLogin extends javax.swing.JFrame {
         btnCloseMesaggePane.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         messagePane.add(btnCloseMesaggePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 30, 30));
 
-        btnCloseMesaggePane1.setFont(new java.awt.Font("bubbleboddy", 0, 18)); // NOI18N
-        btnCloseMesaggePane1.setForeground(new java.awt.Color(240, 240, 240));
-        btnCloseMesaggePane1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnCloseMesaggePane1.setText("X");
-        btnCloseMesaggePane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCloseMesaggePane1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        messagePane.add(btnCloseMesaggePane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 30, 30));
-
         loginPane.add(messagePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 440, 50));
 
         jPanel1.setBackground(new java.awt.Color(52, 156, 244));
         loginPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 10));
+
+        btnReset.setBackground(new java.awt.Color(0, 153, 153));
+        btnReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnResetMouseClicked(evt);
+            }
+        });
+        btnReset.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtLogin1.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        txtLogin1.setForeground(new java.awt.Color(240, 240, 240));
+        txtLogin1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtLogin1.setText("RESET");
+        btnReset.add(txtLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 80, 30));
+
+        loginPane.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 120, 30));
 
         bg.add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 440, 550));
 
@@ -301,28 +320,23 @@ public class VentanaLogin extends javax.swing.JFrame {
         if (!cajaUsuario.getText().equals("") && !pass.equals("")) {
             usuario.setUsuario(cajaUsuario.getText());
             usuario.setPassword(pass);
-
-            ConexionBD.getConexion();
-
             ResultSet rs = ConexionBD.consultarUsuario(usuario);
 
             try {
-                if (rs.next()) {
-
-                    if (rs.getInt(1) == 1) {
-                        java.awt.EventQueue.invokeLater(new Runnable() {
-                          public void run() {
-                                new VentanaInicio().setVisible(true);
-                            }
-                        });
-                        dispose();
-                    } else {
-                        messagePane.setBackground(new Color(199, 56, 87));
-                        txtMessageLogin.setText("DATOS ERRONEOS intenta de nuevo");
-                        messagePane.setVisible(true);
-                    }
-
+                rs.next();
+                if (rs.getInt(1) == 1) {
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new VentanaInicio().setVisible(true);
+                        }
+                    });
+                    dispose();
+                } else {
+                    messagePane.setBackground(new Color(199, 56, 87));
+                    txtMessageLogin.setText("DATOS ERRONEOS intenta de nuevo");
+                    messagePane.setVisible(true);
                 }
+
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -349,6 +363,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void messagePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagePaneMouseClicked
         messagePane.setVisible(false);
     }//GEN-LAST:event_messagePaneMouseClicked
+
+    private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
+        restablecerComponentes(cajaUsuario, cajaPassword);
+    }//GEN-LAST:event_btnResetMouseClicked
 
     /**
      * @param args the command line arguments
@@ -384,14 +402,32 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    public void restablecerComponentes(JComponent... componentes) {
+        for (JComponent c : componentes) {
+
+            if (c instanceof JTextField) {
+                ((JTextField) c).setText("");
+            } else if (c instanceof JCheckBox) {
+                ((JCheckBox) c).setSelected(false);
+            } else if (c instanceof JComboBox) {
+                ((JComboBox) c).setSelectedIndex(0);
+            } else if (c instanceof JSpinner) {
+                ((JSpinner) c).setValue(0);
+            } else if (c instanceof JPasswordField) {
+            ((JPasswordField) c).setText("");
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barra;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel btnCloseMesaggePane;
-    private javax.swing.JLabel btnCloseMesaggePane1;
     private javax.swing.JPanel btnHomePane;
     private javax.swing.JPanel btnLogin;
+    private javax.swing.JPanel btnReset;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
     private javax.swing.JPasswordField cajaPassword;
@@ -405,6 +441,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel messagePane;
     private javax.swing.JLabel txtIniciarSesion;
     private javax.swing.JLabel txtLogin;
+    private javax.swing.JLabel txtLogin1;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtMessageLogin;
     private javax.swing.JLabel txtOlvidoXD;

@@ -104,10 +104,10 @@ public class ConexionBD {
             res = 0;
 
             // REGRESA AL ESTADO ANTERIOR
-            try{
+            try {
                 conexion.rollback();
-            } catch(SQLException er){
-                
+            } catch (SQLException er) {
+
             }
             error.printStackTrace();
         }
@@ -142,10 +142,10 @@ public class ConexionBD {
             res = 0;
 
             // REGRESA AL ESTADO ANTERIOR
-            try{
+            try {
                 conexion.rollback();
-            } catch(SQLException er){
-                
+            } catch (SQLException er) {
+
             }
             error.printStackTrace();
         }
@@ -179,10 +179,10 @@ public class ConexionBD {
         } catch (SQLException error) {
 
             // REGRESA AL ESTADO ANTERIOR
-            try{
+            try {
                 conexion.rollback();
-            } catch(SQLException er){
-                
+            } catch (SQLException er) {
+
             }
             error.printStackTrace();
         }
@@ -222,12 +222,55 @@ public class ConexionBD {
         } catch (Exception ex) {
 
             // REGRESA AL ESTADO ANTERIOR
-            try{
+            try {
                 conexion.rollback();
-            } catch(SQLException er){
-                
+            } catch (SQLException er) {
+
             }
+
+            res = 0;
+            //System.out.println(ex.toString());
+        }
+
+        if (res != 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static boolean cambioFabricante(Fabricante f) {
+        int res = 0;
+        try {
+
+            // TRANSACCION
+            conexion.setAutoCommit(false);
+
+            String consulta = "UPDATE fabricantes SET "
+                    + "nombre=?, direccion=?, telefono=? WHERE idFabricantes=?";
+            pstm = conexion.prepareStatement(consulta);
+
+            pstm.setString(1, f.getNombre());
+            pstm.setString(2, f.getDireccion());
+            pstm.setString(3, f.getTelefono());
+            pstm.setInt(4, f.getIdFabricante());
             
+
+            res = pstm.executeUpdate();
+
+            // SE CONFIRMAN LOS CAMBIOS
+            conexion.commit();
+
+        } catch (Exception ex) {
+
+            // REGRESA AL ESTADO ANTERIOR
+            try {
+                conexion.rollback();
+            } catch (SQLException er) {
+
+            }
+
             res = 0;
             //System.out.println(ex.toString());
         }
@@ -341,5 +384,5 @@ public class ConexionBD {
         }
 
         return consulta;
-    }   
+    }
 }

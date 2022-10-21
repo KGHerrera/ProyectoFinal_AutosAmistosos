@@ -48,7 +48,7 @@ public class FabricanteDAO implements Runnable{
     }
     
     public boolean cambioFabricante(){
-        //res = ConexionBD.cambioAutomovil(fabricante);
+        res = ConexionBD.cambioFabricante(fabricante);
         return res;
     }
     

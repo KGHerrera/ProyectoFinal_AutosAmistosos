@@ -371,6 +371,11 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
         btnGraficoPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 220, 220), 2, true));
         btnGraficoPane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGraficoPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGraficoPaneMouseClicked(evt);
+            }
+        });
         btnGraficoPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtIconGrafico.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -2077,7 +2082,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         boolean isColor = comboColor.getSelectedIndex() != 0;
 
         // ---------------- ALTA AUTOMOVIL
-        if (modo == "alta") {
+        if (modo.equals("alta")) {
             if (isFabricante && isModelo && isPrecio && isKilometraje
                     && isNumeroPuertas && isNumeroAcientos && isMarca
                     && isPaisFabricacion && isColor) {
@@ -2160,7 +2165,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
                 messagePane.setVisible(true);
             }
         } // ---------------- CAMBIO AUTOMOVIL
-        else if (modo == "cambio") {
+        else if (modo.equals("cambio")) {
 
             if (isFabricante && isModelo && isPrecio && isKilometraje
                     && isNumeroPuertas && isNumeroAcientos && isMarca
@@ -2252,7 +2257,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
             }
 
         } // ---------------- BAJA AUTOMOVIL
-        else if (modo == "baja") {
+        else if (modo.equals("baja")) {
 
             if (isIdAutomovil) {
                 automovil.setIdAutomovil(Integer.parseInt(cajaIdAutomovil.getText()));
@@ -2289,7 +2294,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
             }
 
         } // ---------------- CONSULTA AUTOMOVIL
-        else if (modo == "consulta") {
+        else if (modo.equals("consulta")) {
 
             if (isFabricante || isModelo || isPrecio || isKilometraje
                     || isNumeroPuertas || isNumeroAcientos || isMarca
@@ -2377,15 +2382,15 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void btnAgregarFabricanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarFabricanteMouseClicked
 
-        // ---------------- ALTA FABRICANTE
+        // ---------------- FABRICANTE
         String datosFaltantes = "TE FALTAN LOS DATOS DE [";
         boolean isIdFabricante = !cajaIdFabricante.getText().equals("");
         boolean isNombre = !cajaNombreFabricante.getText().equals("");
         boolean isDireccion = !cajaDireccionFabricante.getText().equals("");
         boolean isTelefono = !cajaTelefonoFabricante.getText().equals("");
 
-        // ---------------- ALTA AUTOMOVIL
-        if (modo == "alta") {
+        // ---------------- ALTA FABRICANTE
+        if (modoFabricantes.equals("alta")) {
             if (isNombre && isDireccion && isTelefono) {
 
                 fabricante.setNombre(cajaNombreFabricante.getText());
@@ -2435,6 +2440,64 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
                 messagePaneFabricante.setBackground(new Color(199, 56, 87));
                 messagePaneFabricante.setVisible(true);
             }
+        } else if(modoFabricantes.equals("cambio")){
+            
+            if (isNombre && isDireccion && isTelefono && isIdFabricante) {
+
+                fabricante.setNombre(cajaNombreFabricante.getText());
+                fabricante.setDireccion(cajaDireccionFabricante.getText());
+                fabricante.setTelefono(cajaTelefonoFabricante.getText());
+                fabricante.setIdFabricante(Integer.parseInt(cajaIdFabricante.getText()));
+
+                fabricanteDAO.setOpcion(2);
+                fabricanteDAO.setFabricante(fabricante);
+
+                Thread h1 = new Thread(fabricanteDAO);
+                h1.start();
+
+                try {
+                    h1.join();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                if (fabricanteDAO.isRes()) {
+                    txtMessageFabricante.setText("EXITO AL MODIFICAR EL FABRICANTE!");
+                    messagePaneFabricante.setBackground(new Color(0, 153, 153));
+                    messagePaneFabricante.setVisible(true);
+                    //reiniciarComponentes();
+                } else {
+                    txtMessageFabricante.setText("ERROR AL MODIFICAR!");
+                    messagePaneFabricante.setBackground(new Color(199, 56, 87));
+                    messagePaneFabricante.setVisible(true);
+                }
+
+                actualizarTablaFabricantes();
+            } else {
+                
+                 if (!isIdFabricante) {
+                    datosFaltantes += " IDFabricante";
+                }
+                 
+                if (!isNombre) {
+                    datosFaltantes += " Nombre";
+                }
+
+                if (!isDireccion) {
+                    datosFaltantes += " Direccion";
+                }
+
+                if (!isTelefono) {
+                    datosFaltantes += " Telefono";
+                }
+
+                datosFaltantes += " ]";
+
+                txtMessageFabricante.setText(datosFaltantes);
+                messagePaneFabricante.setBackground(new Color(199, 56, 87));
+                messagePaneFabricante.setVisible(true);
+            }
+            
         }
 
 
@@ -2460,7 +2523,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void tablaAutosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAutosMouseReleased
 
-        if (modo == "cambio" || modo == "consulta"  || modo=="alta") {
+        if (modo == "cambio" || modo == "consulta" || modo == "alta") {
             cajaIdAutomovil.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
             cajaFabricante.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 9)));
             cajaModelo.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 1)));
@@ -2471,7 +2534,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
             comboColor.setSelectedItem(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 6)));
             spinNumeroAsientos.setValue(Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 7))));
             cajaKilometraje.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 8)));
-        } if (modo == "baja"){
+        }
+        if (modo == "baja") {
             cajaIdAutomovil.setText(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
         }
 
@@ -2483,17 +2547,33 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         }
     }//GEN-LAST:event_cajaModeloKeyReleased
 
+    // -----------------------------------------------------------------------
+    // GENERACION DEL REPORTE
+    // -----------------------------------------------------------------------
+
     private void btnReportePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportePaneMouseClicked
-        try{
-            String rutaReporte = System.getProperty("user.dir")+"/src/reportes/report1.jasper";
-            JasperReport jasperReport = (JasperReport)JRLoader.loadObjectFromFile(rutaReporte);
+        try {
+            String rutaReporte = System.getProperty("user.dir") + "/src/reportes/report1.jasper";
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(rutaReporte);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, null, ConexionBD.getConexion());
             JasperViewer view = new JasperViewer(print, false);
             view.setVisible(true);
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnReportePaneMouseClicked
+
+    private void btnGraficoPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraficoPaneMouseClicked
+        try {
+            String rutaReporte = System.getProperty("user.dir") + "/src/reportes/estadisticas.jasper";
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(rutaReporte);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, null, ConexionBD.getConexion());
+            JasperViewer view = new JasperViewer(print, false);
+            view.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnGraficoPaneMouseClicked
 
     // -----------------------------------------------------------------------
     // METODOS Y VARIABLES PROPIOS

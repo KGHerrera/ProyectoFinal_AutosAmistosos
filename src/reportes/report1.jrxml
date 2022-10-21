@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a4df11f-0056-443d-9e5e-1f580f3cdebf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT * FROM automoviles;]]>
 	</queryString>
@@ -15,23 +18,35 @@
 	</background>
 	<title>
 		<band height="72">
-			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="07673db9-d704-41d0-b6cb-cc23d70c1ce0"/>
-				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="a4313170-d385-448e-8142-9332975083a3"/>
-					<textElement>
-						<font size="34" isBold="true"/>
-					</textElement>
-					<text><![CDATA[TITLE]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="be662fc3-dcc8-4036-b932-2f473320c490"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Add a description here]]></text>
-				</staticText>
-			</frame>
+			<rectangle>
+				<reportElement x="-21" y="-20" width="596" height="92" forecolor="#281748" backcolor="#281748" uuid="6254cb4f-bd48-46bc-9294-c90f01acf62e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="459" y="-20" width="76" height="92" forecolor="#F0F0F0" uuid="af3a6528-f22b-4377-9016-15d9c48bad0e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="20"/>
+				</textElement>
+				<text><![CDATA[AutAmi]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="547" y="14" width="20" height="19" backcolor="#0875CF" uuid="289c168e-95e1-4e75-8dd8-47689c1d8cb8"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="537" y="21" width="20" height="19" uuid="c188b604-6909-41e5-8659-cede7eff8063"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="-20" width="429" height="92" forecolor="#F0F0F0" uuid="8c8a3fd6-8b55-45ba-9686-e5fe68cabd24"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="24"/>
+				</textElement>
+				<text><![CDATA[Automoviles en venta]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
