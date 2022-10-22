@@ -24,12 +24,12 @@ GROUP BY f.idFabricantes;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Roboto" size="24"/>
 				</textElement>
-				<text><![CDATA[Automoviles en venta por Fabricantes]]></text>
+				<text><![CDATA[Automoviles en venta por FABRICANTES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="72" y="11" width="76" height="73" forecolor="#F0F0F0" uuid="aa1f5650-97a3-4b8e-b1fd-10d081b4ec0f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Roboto" size="20"/>
+					<font fontName="Roboto Black" size="20"/>
 				</textElement>
 				<text><![CDATA[AutAmi]]></text>
 			</staticText>
@@ -40,7 +40,7 @@ GROUP BY f.idFabricantes;]]>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="42" y="43" width="20" height="19" uuid="39b3bd0f-520e-4f54-9ef8-b70fa79b077c"/>
+				<reportElement x="38" y="39" width="20" height="19" uuid="39b3bd0f-520e-4f54-9ef8-b70fa79b077c"/>
 				<graphicElement>
 					<pen lineWidth="0.0"/>
 				</graphicElement>

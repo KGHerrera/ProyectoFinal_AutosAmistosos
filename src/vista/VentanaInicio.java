@@ -2553,7 +2553,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
     private void btnReportePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportePaneMouseClicked
         try {
-            String rutaReporte = System.getProperty("user.dir") + "/src/reportes/report1.jasper";
+            String rutaReporte = System.getProperty("user.dir") + "/src/reportes/reporteAutos.jasper";
             JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(rutaReporte);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, null, ConexionBD.getConexion());
             JasperViewer view = new JasperViewer(print, false);
