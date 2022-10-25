@@ -76,7 +76,7 @@ public class ConexionBD {
 
         return rs;
     }
-
+    
     public static boolean altaAutomovil(Automovil a) {
         int res = 0;
         try {
@@ -384,5 +384,35 @@ public class ConexionBD {
         }
 
         return consulta;
+    }
+    
+    public static ResultSet verificarUsuario(Usuario u) {
+        try {
+            String consulta = "SELECT VERIFICAR(?, ?);";
+            
+            pstm = conexion.prepareStatement(consulta);
+            pstm.setString(1, u.getUsuario());
+            pstm.setString(2, u.getPassword());
+
+            rs = pstm.executeQuery();
+
+        } catch (Exception ex) {
+            //System.out.println(ex.toString());
+        }
+
+        return rs;
+    }
+    
+    public static void main(String[] args) {
+        ConexionBD.getConexion();
+        rs = ConexionBD.verificarUsuario(new Usuario(1, "ilulu", "ilulu"));
+        try{
+            rs.next();
+            System.out.println(rs.getString(1));
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        
     }
 }

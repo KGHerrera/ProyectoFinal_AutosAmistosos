@@ -29,6 +29,8 @@ public class VentanaLogin extends javax.swing.JFrame {
     /**
      * Creates new form VentanaLogin
      */
+    public static String user = "";
+    
     public VentanaLogin() {
         
         ConexionBD.getConexion();
@@ -317,14 +319,15 @@ public class VentanaLogin extends javax.swing.JFrame {
         char[] arrayC = cajaPassword.getPassword();
         String pass = new String(arrayC);
 
-        if (!cajaUsuario.getText().equals("") && !pass.equals("")) {
+        if (!cajaUsuario.getText().trim().equals("") && !pass.trim().equals("")) {
             usuario.setUsuario(cajaUsuario.getText());
             usuario.setPassword(pass);
-            ResultSet rs = ConexionBD.consultarUsuario(usuario);
+            ResultSet rs = ConexionBD.verificarUsuario(usuario);
 
             try {
                 rs.next();
-                if (rs.getInt(1) == 1) {
+                if (rs.getString(1) != null) {
+                    user = rs.getString(1);
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             new VentanaInicio().setVisible(true);
@@ -344,11 +347,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         } else {
             String noDatos = "Introduce [";
 
-            if (cajaUsuario.getText().equals("")) {
+            if (cajaUsuario.getText().trim().equals("")) {
                 noDatos += " USUARIO";
             }
 
-            if (pass.equals("")) {
+            if (pass.trim().equals("")) {
                 noDatos += " PASSWORD";
             }
 
