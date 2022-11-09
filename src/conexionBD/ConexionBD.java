@@ -60,6 +60,30 @@ public class ConexionBD {
             //e.printStackTrace();
         }
     }
+    
+    /*--------------------------------------------------------------------------
+    
+    CREATE OR REPLACE FUNCTION VERIFICAR_USUARIO(usuarioP varchar(20), passwordP TEXT) RETURNS INTEGER
+    LANGUAGE 'plpgsql' AS
+    $$
+	DECLARE
+	resultado INTEGER;
+	BEGIN
+		SELECT count(*) INTO resultado
+		FROM usuarios
+		WHERE usuario = usuarioP
+		AND PGP_SYM_DECRYPT(password::bytea, 'AES_KEY') = passwordP;
+		RETURN resultado;
+	END
+    $$;
+    
+    
+    Se implemento una funcion para la verificacion de usuario, buscando ejemplos encontre que lo mas
+    comun al utilizar funciones era para este proceso, la tabla de usuarios tiene cifrado el password
+    por lo que esta funcion decodifica el password resivido y la compara con el usuario ingresado
+    finalmente retorna el 1 si lo encuentra y 0 si no
+    
+    --------------------------------------------------------------------------*/
 
     public static ResultSet consultarUsuario(Usuario u) {
         try {
@@ -76,6 +100,11 @@ public class ConexionBD {
 
         return rs;
     }
+    
+    /* -----------------------------------------------------------------
+       Se implementaron TRANSACCIONES para ALTAS BAJAS Y CAMBIOS en la
+       tabla automoviles, es decir para instrucciones DML
+    -------------------------------------------------------------------*/
     
     public static boolean altaAutomovil(Automovil a) {
         int res = 0;
@@ -189,6 +218,28 @@ public class ConexionBD {
 
         return false;
     }
+    
+    /*
+        CREATE FUNCTION before_auto_update_f() RETURNS Trigger
+        as
+        $$
+            BEGIN
+                INSERT INTO autos_respaldo values(OLD.idAutomoviles, OLD.idFabricantes, OLD.modelo, OLD.marca, OLD.precio, OLD.paisFabricacion, OLD.numeroPuertas, OLD.color, OLD.numeroAcientos, OLD.kilometraje, NOW());
+                RETURN new;
+            END
+        $$
+        LANGUAGE plpgsql;
+    
+        CREATE TRIGGER before_auto_update
+        BEFORE UPDATE ON automoviles
+        FOR EACH ROW
+        EXECUTE PROCEDURE before_auto_update_f();
+        
+    Se creo una FUNCION la cual sera utilizada para el evento de modificacion en la tabla automoviles,
+    el trigger respalda los datos anteriores a la actualizacion antes de ser modificados ademas agrega la fecha y hora
+    de modificacion del registro
+    
+    */
 
     public static boolean cambioAutomovil(Automovil a) {
         int res = 0;
@@ -240,6 +291,23 @@ public class ConexionBD {
 
     }
 
+    
+    /*--------------------------------------------------------------------------
+    CREATE PROCEDURE update_fabricantes(
+    nombrep VARCHAR(20),
+    direccionp VARCHAR(40),
+    telefonop VARCHAR(12),
+    idFabricantesp INTEGER)
+    LANGUAGE plpgsql AS
+    $$
+        BEGIN
+        UPDATE fabricantes SET nombre=nombrep, direccion=direccionp, telefono=telefonop WHERE idFabricantes=idFabricantesp;
+        END
+    $$;
+    
+    Se implemento un procedimiento almacenado el cual hace mucho mas facil la modificacion de 
+    registros en la tabla fabricantes
+    --------------------------------------------------------------------------*/
     public static boolean cambioFabricante(Fabricante f) {
         int res = 0;
         try {
@@ -247,8 +315,7 @@ public class ConexionBD {
             // TRANSACCION
             conexion.setAutoCommit(false);
 
-            String consulta = "UPDATE fabricantes SET "
-                    + "nombre=?, direccion=?, telefono=? WHERE idFabricantes=?";
+            String consulta = "CALL update_fabricantes(?, ?, ?, ?)";
             pstm = conexion.prepareStatement(consulta);
 
             pstm.setString(1, f.getNombre());
@@ -258,6 +325,7 @@ public class ConexionBD {
             
 
             res = pstm.executeUpdate();
+            
 
             // SE CONFIRMAN LOS CAMBIOS
             conexion.commit();
@@ -274,6 +342,8 @@ public class ConexionBD {
             res = 0;
             //System.out.println(ex.toString());
         }
+        
+        System.out.println(res);
 
         if (res != 0) {
             return true;
@@ -282,6 +352,8 @@ public class ConexionBD {
         }
 
     }
+    
+    
 
     public static void actualizarTabla(JTable tabla, String nombreTabla, String order) {
         String consulta;
@@ -301,6 +373,20 @@ public class ConexionBD {
         tabla.setModel(modeloDatos);
 
     }
+    
+    /*-----------------------------------------------------------------------------
+    
+    CREATE VIEW AUTOS_FABRICANTES
+    AS SELECT idAutomoviles, modelo, marca, precio, paisFabricacion, numeroPuertas, 
+    color, numeroAcientos, kilometraje, a.idFabricantes, nombre, direccion, telefono 
+    FROM automoviles a
+    INNER JOIN fabricantes f
+    ON a.idFabricantes = f.idFabricantes;
+    
+    para actualizar la tabla automoviles se utiliza la vista AUTOS_FABRICANTES 
+    la cual crea un JOIN entre la tabla automoviles y fabricantes
+    
+    -------------------------------------------------------------------------------*/
 
     public static void actualizarTablaAutomovilesFiltro(JTable tabla, String campo, String filtro) {
         String consulta;
@@ -385,6 +471,27 @@ public class ConexionBD {
 
         return consulta;
     }
+    
+    /*--------------------------------------------------------------------------
+    
+    CREATE OR REPLACE FUNCTION VERIFICAR(usuarioP varchar(20), passwordP TEXT) RETURNS INTEGER
+    LANGUAGE 'plpgsql' AS
+    $$
+	DECLARE
+	resultado VARCHAR;
+	BEGIN
+		SELECT usuario INTO resultado
+		FROM usuarios
+		WHERE usuario = usuarioP
+		AND PGP_SYM_DECRYPT(password::bytea, 'AES_KEY') = passwordP;
+		RETURN resultado;
+	END
+    $$;
+    
+    
+    Funciona igual que la anterior funcion solo que retorna el nombre de usuario en lugar de 0 y 1
+    
+    --------------------------------------------------------------------------*/
     
     public static ResultSet verificarUsuario(Usuario u) {
         try {
