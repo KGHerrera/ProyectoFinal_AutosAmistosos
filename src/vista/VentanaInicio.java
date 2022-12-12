@@ -168,6 +168,24 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         messagePane = new javax.swing.JPanel();
         txtMessageAutos = new javax.swing.JLabel();
         btnCloseMesaggePane = new javax.swing.JLabel();
+        autosRespaldoPane = new javax.swing.JPanel();
+        barraRespaldoPane = new javax.swing.JPanel();
+        txtAutosRespaldoTitulo = new javax.swing.JLabel();
+        txtRespaldoTitulo = new javax.swing.JLabel();
+        jScrollPaneRespaldo = new javax.swing.JScrollPane();
+        tablaAutosRespaldo = new javax.swing.JTable();
+        inicioPane = new javax.swing.JPanel();
+        barraInicioPane = new javax.swing.JPanel();
+        txtSeleccionaAccion = new javax.swing.JLabel();
+        txtInicioTitulo = new javax.swing.JLabel();
+        messagePaneInicio = new javax.swing.JPanel();
+        txtMessageInicio = new javax.swing.JLabel();
+        fluttershy = new javax.swing.JLabel();
+        logoPane = new javax.swing.JPanel();
+        txtLogoMain = new javax.swing.JLabel();
+        cuadroDec1 = new javax.swing.JPanel();
+        cuadroDec3 = new javax.swing.JPanel();
+        txtWelcomeUser = new javax.swing.JLabel();
         reportesPane = new javax.swing.JPanel();
         barPaneReportes = new javax.swing.JPanel();
         txtReportesTitulo = new javax.swing.JLabel();
@@ -280,18 +298,6 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         messagePaneFabricante = new javax.swing.JPanel();
         txtMessageFabricante = new javax.swing.JLabel();
         btnCloseMesaggePaneFabricante = new javax.swing.JLabel();
-        inicioPane = new javax.swing.JPanel();
-        barraInicioPane = new javax.swing.JPanel();
-        txtSeleccionaAccion = new javax.swing.JLabel();
-        txtInicioTitulo = new javax.swing.JLabel();
-        messagePaneInicio = new javax.swing.JPanel();
-        txtMessageInicio = new javax.swing.JLabel();
-        fluttershy = new javax.swing.JLabel();
-        logoPane = new javax.swing.JPanel();
-        txtLogoMain = new javax.swing.JLabel();
-        cuadroDec1 = new javax.swing.JPanel();
-        cuadroDec3 = new javax.swing.JPanel();
-        txtWelcomeUser = new javax.swing.JLabel();
         menu = new javax.swing.JPanel();
         txtLogo = new javax.swing.JLabel();
         cuadroDec = new javax.swing.JPanel();
@@ -309,6 +315,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         btnHomePane = new javax.swing.JPanel();
         txtUserName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnAutosRespaldo = new javax.swing.JPanel();
+        txtAutosRespaldo = new javax.swing.JLabel();
         barra = new javax.swing.JPanel();
         btn_minimize = new javax.swing.JLabel();
         btn_close = new javax.swing.JLabel();
@@ -631,6 +639,123 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         autosPane.add(autoFormularioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1030, 580));
 
         bg.add(autosPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        autosRespaldoPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barraRespaldoPane.setBackground(new java.awt.Color(55, 42, 104));
+        barraRespaldoPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutosRespaldoTitulo.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtAutosRespaldoTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutosRespaldoTitulo.setText("Tabla AUTOS RESPALDO");
+        barraRespaldoPane.add(txtAutosRespaldoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        txtRespaldoTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtRespaldoTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtRespaldoTitulo.setText("Automoviles");
+        barraRespaldoPane.add(txtRespaldoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        autosRespaldoPane.add(barraRespaldoPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        tablaAutosRespaldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tablaAutosRespaldo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaAutosRespaldo.setRowHeight(20);
+        tablaAutosRespaldo.setShowVerticalLines(false);
+        jScrollPaneRespaldo.setViewportView(tablaAutosRespaldo);
+
+        autosRespaldoPane.add(jScrollPaneRespaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 970, 470));
+
+        bg.add(autosRespaldoPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
+        inicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barraInicioPane.setBackground(new java.awt.Color(55, 42, 104));
+        barraInicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtSeleccionaAccion.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        txtSeleccionaAccion.setForeground(new java.awt.Color(240, 240, 240));
+        txtSeleccionaAccion.setText("SELECCIONA ALGUN SUBMENU DE LA IZQUIERDA");
+        barraInicioPane.add(txtSeleccionaAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
+
+        txtInicioTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtInicioTitulo.setForeground(new java.awt.Color(240, 240, 240));
+        txtInicioTitulo.setText("PANTALLA DE INICIO");
+        barraInicioPane.add(txtInicioTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+
+        inicioPane.add(barraInicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
+
+        messagePaneInicio.setBackground(new java.awt.Color(0, 153, 153));
+        messagePaneInicio.setForeground(new java.awt.Color(33, 235, 103));
+        messagePaneInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        messagePaneInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtMessageInicio.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        txtMessageInicio.setForeground(new java.awt.Color(240, 240, 240));
+        txtMessageInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMessageInicio.setText("POWERED BY APACHE FRIJOLES NETOS");
+        messagePaneInicio.add(txtMessageInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 930, 50));
+
+        inicioPane.add(messagePaneInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1030, 50));
+
+        fluttershy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/full.gif"))); // NOI18N
+        inicioPane.add(fluttershy, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
+
+        logoPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtLogoMain.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        txtLogoMain.setForeground(new java.awt.Color(50, 50, 50));
+        txtLogoMain.setText("AutAmi");
+        logoPane.add(txtLogoMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 80));
+
+        cuadroDec1.setBackground(new java.awt.Color(40, 40, 40));
+
+        javax.swing.GroupLayout cuadroDec1Layout = new javax.swing.GroupLayout(cuadroDec1);
+        cuadroDec1.setLayout(cuadroDec1Layout);
+        cuadroDec1Layout.setHorizontalGroup(
+            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        cuadroDec1Layout.setVerticalGroup(
+            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        logoPane.add(cuadroDec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+
+        cuadroDec3.setBackground(new java.awt.Color(8, 117, 207));
+
+        javax.swing.GroupLayout cuadroDec3Layout = new javax.swing.GroupLayout(cuadroDec3);
+        cuadroDec3.setLayout(cuadroDec3Layout);
+        cuadroDec3Layout.setHorizontalGroup(
+            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        cuadroDec3Layout.setVerticalGroup(
+            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        logoPane.add(cuadroDec3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        txtWelcomeUser.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        txtWelcomeUser.setForeground(new java.awt.Color(50, 50, 50));
+        txtWelcomeUser.setText("WELCOME TO ");
+        txtWelcomeUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        logoPane.add(txtWelcomeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 80));
+
+        inicioPane.add(logoPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 670, 280));
+
+        bg.add(inicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
         reportesPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1494,86 +1619,6 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
 
         bg.add(fabricantesPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
-        inicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        barraInicioPane.setBackground(new java.awt.Color(55, 42, 104));
-        barraInicioPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtSeleccionaAccion.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
-        txtSeleccionaAccion.setForeground(new java.awt.Color(240, 240, 240));
-        txtSeleccionaAccion.setText("SELECCIONA ALGUN SUBMENU DE LA IZQUIERDA");
-        barraInicioPane.add(txtSeleccionaAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 60));
-
-        txtInicioTitulo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtInicioTitulo.setForeground(new java.awt.Color(240, 240, 240));
-        txtInicioTitulo.setText("PANTALLA DE INICIO");
-        barraInicioPane.add(txtInicioTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
-
-        inicioPane.add(barraInicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 110));
-
-        messagePaneInicio.setBackground(new java.awt.Color(0, 153, 153));
-        messagePaneInicio.setForeground(new java.awt.Color(33, 235, 103));
-        messagePaneInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        messagePaneInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtMessageInicio.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        txtMessageInicio.setForeground(new java.awt.Color(240, 240, 240));
-        txtMessageInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMessageInicio.setText("POWERED BY APACHE FRIJOLES NETOS");
-        messagePaneInicio.add(txtMessageInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 930, 50));
-
-        inicioPane.add(messagePaneInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1030, 50));
-
-        fluttershy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/full.gif"))); // NOI18N
-        inicioPane.add(fluttershy, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, -1, -1));
-
-        logoPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtLogoMain.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        txtLogoMain.setForeground(new java.awt.Color(50, 50, 50));
-        txtLogoMain.setText("AutAmi");
-        logoPane.add(txtLogoMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 80));
-
-        cuadroDec1.setBackground(new java.awt.Color(40, 40, 40));
-
-        javax.swing.GroupLayout cuadroDec1Layout = new javax.swing.GroupLayout(cuadroDec1);
-        cuadroDec1.setLayout(cuadroDec1Layout);
-        cuadroDec1Layout.setHorizontalGroup(
-            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        cuadroDec1Layout.setVerticalGroup(
-            cuadroDec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        logoPane.add(cuadroDec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
-
-        cuadroDec3.setBackground(new java.awt.Color(8, 117, 207));
-
-        javax.swing.GroupLayout cuadroDec3Layout = new javax.swing.GroupLayout(cuadroDec3);
-        cuadroDec3.setLayout(cuadroDec3Layout);
-        cuadroDec3Layout.setHorizontalGroup(
-            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        cuadroDec3Layout.setVerticalGroup(
-            cuadroDec3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        logoPane.add(cuadroDec3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
-
-        txtWelcomeUser.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        txtWelcomeUser.setForeground(new java.awt.Color(50, 50, 50));
-        txtWelcomeUser.setText("WELCOME TO ");
-        txtWelcomeUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        logoPane.add(txtWelcomeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 80));
-
-        inicioPane.add(logoPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 670, 280));
-
-        bg.add(inicioPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
-
         menu.setBackground(new java.awt.Color(40, 23, 72));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1758,6 +1803,30 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         btnHomePane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
 
         menu.add(btnHomePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 250, 50));
+
+        btnAutosRespaldo.setBackground(new java.awt.Color(54, 42, 99));
+        btnAutosRespaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAutosRespaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAutosRespaldoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAutosRespaldoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAutosRespaldoMouseExited(evt);
+            }
+        });
+        btnAutosRespaldo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtAutosRespaldo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAutosRespaldo.setForeground(new java.awt.Color(240, 240, 240));
+        txtAutosRespaldo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtAutosRespaldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/car-4-16.png"))); // NOI18N
+        txtAutosRespaldo.setText(" Autos Respaldo");
+        btnAutosRespaldo.add(txtAutosRespaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 220, 50));
+
+        menu.add(btnAutosRespaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 250, -1));
 
         bg.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
 
@@ -2474,8 +2543,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
                     messagePaneFabricante.setVisible(true);
                     //reiniciarComponentes();
                 } else {
-                    txtMessageFabricante.setText("ERROR AL MODIFICAR!");
-                    messagePaneFabricante.setBackground(new Color(199, 56, 87));
+                    txtMessageFabricante.setText("EXITO AL MODIFICAR EL FABRICANTE!");
+                    messagePaneFabricante.setBackground(new Color(0, 153, 153));
                     messagePaneFabricante.setVisible(true);
                 }
                 
@@ -2576,6 +2645,20 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         }
     }//GEN-LAST:event_btnGraficoPaneMouseClicked
 
+    private void btnAutosRespaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosRespaldoMouseClicked
+        actualizarTablaRespaldoAutos();
+        ocultarSubMenuPanes();
+        autosRespaldoPane.setVisible(true);
+    }//GEN-LAST:event_btnAutosRespaldoMouseClicked
+
+    private void btnAutosRespaldoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosRespaldoMouseEntered
+        btnAutosRespaldo.setBackground(new Color(70, 59, 115));
+    }//GEN-LAST:event_btnAutosRespaldoMouseEntered
+
+    private void btnAutosRespaldoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAutosRespaldoMouseExited
+        btnAutosRespaldo.setBackground(new Color(54, 42, 99));
+    }//GEN-LAST:event_btnAutosRespaldoMouseExited
+
     // -----------------------------------------------------------------------
     // METODOS Y VARIABLES PROPIOS
     // -----------------------------------------------------------------------
@@ -2619,6 +2702,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
         fabricantesPane.setVisible(false);
         reportesPane.setVisible(false);
         inicioPane.setVisible(false);
+        autosRespaldoPane.setVisible(false);
     }
     
     private void desAbiComponentes(boolean isEnabled) {
@@ -2674,6 +2758,10 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private void actualizarTablaFabricantes() {
         ConexionBD.actualizarTabla(tablaFabricantes, "fabricantes", "idFabricantes");
     }
+    
+    public void actualizarTablaRespaldoAutos(){
+        ConexionBD.actualizarTabla(tablaAutosRespaldo, "autos_respaldo", "idAutomoviles");
+    }
 
     /**
      * @param args the command line arguments
@@ -2713,6 +2801,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel autoFormularioPane;
     private javax.swing.JPanel autosPane;
+    private javax.swing.JPanel autosRespaldoPane;
     private javax.swing.JPanel barPaneAuto;
     private javax.swing.JPanel barPaneClientes;
     private javax.swing.JPanel barPaneFabricantes;
@@ -2720,12 +2809,14 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JPanel barPaneVentas;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel barraInicioPane;
+    private javax.swing.JPanel barraRespaldoPane;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnAgregarCliente;
     private javax.swing.JPanel btnAgregarFabricante;
     private javax.swing.JPanel btnAgregarVenta;
     private javax.swing.JPanel btnAutos;
+    private javax.swing.JPanel btnAutosRespaldo;
     private javax.swing.JPanel btnClientes;
     private javax.swing.JLabel btnCloseMesaggePane;
     private javax.swing.JLabel btnCloseMesaggePane1;
@@ -2800,6 +2891,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel fluttershy;
     private javax.swing.JPanel inicioPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPaneRespaldo;
     private javax.swing.JPanel logoPane;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel messagePane;
@@ -2816,6 +2908,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JSpinner spinNumeroAsientos;
     private javax.swing.JSpinner spinNumeroPuertas;
     private javax.swing.JTable tablaAutos;
+    private javax.swing.JTable tablaAutosRespaldo;
     private javax.swing.JTable tablaClientes;
     private javax.swing.JTable tablaFabricantes;
     private javax.swing.JTable tablaVenta;
@@ -2825,6 +2918,8 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtAgregarFabricante;
     private javax.swing.JLabel txtAsientos;
     private javax.swing.JLabel txtAutos;
+    private javax.swing.JLabel txtAutosRespaldo;
+    private javax.swing.JLabel txtAutosRespaldoTitulo;
     private javax.swing.JLabel txtAutosTitulo;
     private javax.swing.JLabel txtClientes;
     private javax.swing.JLabel txtClientesTitulo;
@@ -2879,6 +2974,7 @@ public class VentanaInicio extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel txtReporteIcon;
     private javax.swing.JLabel txtReportes;
     private javax.swing.JLabel txtReportesTitulo;
+    private javax.swing.JLabel txtRespaldoTitulo;
     private javax.swing.JLabel txtSegundoApellido;
     private javax.swing.JLabel txtSeleccionaAccion;
     private javax.swing.JLabel txtTelefonoCliente;

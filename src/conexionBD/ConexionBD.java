@@ -102,6 +102,10 @@ public class ConexionBD {
     }
     
     /* -----------------------------------------------------------------
+    INSERT INTO usuarios(usuario, password) VALUES ('kobayashi', PGP_SYM_ENCRYPT('kobayashi', 'AES_KEY'));
+    -------------------------------------------------------------------*/
+    
+    /* -----------------------------------------------------------------
        Se implementaron TRANSACCIONES para ALTAS BAJAS Y CAMBIOS en la
        tabla automoviles, es decir para instrucciones DML
     -------------------------------------------------------------------*/
